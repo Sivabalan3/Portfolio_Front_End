@@ -1,76 +1,81 @@
-import { CheckIcon, UserIcon,EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, UserIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import loginimage from '../myimgs/back-loginwebp.webp';
-import Helmet from "react-helmet"
-// import { emailvalidate,passwordvalidate } from "./emailvalidate";
+import { HelmetProvider, Helmet } from "react-helmet-async"
 import { useNavigate } from "react-router-dom";
-// import {GiTigerHead} from 'react-icons/gi'
+import { useFormik } from "formik";
+import { adminSchema } from "./schemas";
+
+
 function Loginform() {
-    //Login pasword and validation 
-    const history =useNavigate();
+    const history = useNavigate();
+    const onSubmit = async (values, action) => {
+
+        if (values.email !== 'siva@gmail.com' || values.password !== 'Siva@2005')
+            localStorage.setItem('auth', true);
+        history("/Admindashboard");
+            action.resetForm()
+
+    }
+
     //HIDE AND SHOW [PASSWORD]
     const [Hide, setHide] = useState(false);
     const handleShow = () => {
         setHide(!Hide);
     }
-    useEffect(()=>{
-        if(localStorage.getItem('auth')) history("/Admindashboard")
-    },[]); 
-//Form validation
-const [inputs,setinputs]=useState({email:'', password:''});
-const [errormsg,seterrormsg]=useState('');
-const [succesmsg,setsuccesmsg] =useState('');
-const handlechange =(e)=>{
-    setinputs({...inputs,[e.target.name]:e.target.value})
-}
+    useEffect(() => {
+        if (localStorage.getItem('auth')) history("/Admindashboard")
+    }, []);
 
-const formSubmited =(e)=>{
-    e.preventDefault();
-    setsuccesmsg('');
-    // seterrormsg('')
-    // if(!emailvalidate(inputs.email))return seterrormsg('please enter valid email id');
-    // if(!passwordvalidate(inputs.password)){
-    //     return seterrormsg('password should have minimum 8 character with the combination of uppercase ,lowercase,number and specialcharaters');
-    // }
-    if(inputs.email !=='siva@gmail.com' || inputs.password !=='Siva@2005')return seterrormsg('invalid Email or password');
-    localStorage.setItem('auth',true);
-        history("/Admindashboard");
-    // setsuccesmsg('Succesfully validate');
-    setinputs("")
-};
- 
+    const { values, handleBlur, handleChange, errors, handleSubmit, touched } = useFormik({
+        initialValues: {
+            email: "",
+            password: ""
+
+        },
+        validationSchema: adminSchema,
+        onSubmit
+    })
 
     return (
         <>
-        <Helmet>
-            <title>Admin</title>
-        </Helmet>
+            <HelmetProvider>
+
+
+                <Helmet>
+                    <title>Admin</title>
+                </Helmet>
+            </HelmetProvider>
             <section className="bg-gray-50 dark:bg-gray-900 w-full h-screen">
                 <img src={loginimage} type="webp" alt="backlogin" className=" w-full h-full absolute object-cover" />
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                
+
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 relative top-5 md:top-0 md:bottom-14 ">
                         <div className="p-4 space-y-4 md:space-y-6 sm:p-8">
-                       
+
                             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center">
                                 Admin Login Page
                             </h1>
-                            <span className=" text-amber-400">Email : siva@gmail.com</span><br/>
+                            <span className=" text-amber-400">Email : siva@gmail.com</span><br />
                             <span className=" text-amber-400">password : Siva@2005</span>
-                            {/* <GiTigerHead className="w-16 h-16 text-amber-400 animate-ping duration-1000 shadow-2xl z-10"/> */}
-                            <form className="space-y-4 md:space-y-6"  onSubmit={formSubmited}>
+
+                            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                                 <div>
-                                    {errormsg.length > 0 && <div className="text-red-500 py-1">{errormsg}</div>}
-                                    {succesmsg.length > 0 && <div className="text-green-500 py-1">{succesmsg}</div>}
+
                                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                                     <div className="inline-block justify-end relative top-8 float-right right-3">
-                                        <UserIcon className="w-5 h-5 text-green-500  "/>
-                               
+                                        <UserIcon className="w-5 h-5 text-green-500  " />
+
                                     </div>
-                                    
-                                {/* <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@gmail.com"  onChange={handlechange}/> */}
-                                <input type="text" name="email"  className="px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" placeholder="Username" onChange={handlechange}  autoComplete="off"/>
+
+
+                                    <input type="text" name="email" className="px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" placeholder="Username"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.email}
+                                        autoComplete="off" />
+                                    {errors.email && touched.email && <span className="text-red-500 py-1 pb-1">{errors.email}</span>}
                                 </div>
                                 <div>
                                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
@@ -80,13 +85,18 @@ const formSubmited =(e)=>{
                                             Hide ? <EyeIcon className="w-5 h-5 text-green-500 hover:pulse-ping" onClick={handleShow} /> : <EyeSlashIcon className="w-5 h-5 text-red-500" onClick={handleShow} />
                                         }
                                     </div>
-                                    {/* <input type={Hide ? "text" : 'password'} name="password" id="password" placeholder="Password" className=" bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  onChange={handlechange}/> */}
-                                    <input type={Hide ? "text" : 'password'} name="password" className="px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-400 focus:border-sky-400 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" placeholder="Username" onChange={handlechange}/>
+
+                                    <input type={Hide ? "text" : 'password'} name="password" className="px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-400 focus:border-sky-400 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" placeholder="Password"
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.password}
+                                        autoComplete="off" />
+                                    {errors.password && touched.password && <span className="text-red-500 py-1 pb-1">{errors.password}</span>}
                                 </div>
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-start">
                                         <div className="flex items-center h-5">
-                                            <input name="password" id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="" />
+                                            <input  id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="" />
                                         </div>
                                         <div className="ml-3 text-sm">
                                             <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>
@@ -110,9 +120,9 @@ const formSubmited =(e)=>{
                         </div>
                     </div>
                 </div>
-                
+
             </section>
-        
+
         </>
     );
 

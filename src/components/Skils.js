@@ -6,7 +6,9 @@ import reactjs from '../myimgs/icons/reactjs.png';
 import node from "../myimgs/icons/nodejs.png";
 import tailwind from '../myimgs/icons/tailwindcss.png';
 import AOS from "aos";
-import Helmet from 'react-helmet'
+// import Helmet from 'react-helmet'
+import {HelmetProvider,Helmet} from "react-helmet-async"
+
 function Skils(){
   const history =useNavigate();
   useEffect(()=>{
@@ -18,14 +20,17 @@ function Skils(){
       }, [])
     return(
     <>
+    <HelmetProvider>
+
     <Helmet>
     <title>Details</title>
   </Helmet>
+    </HelmetProvider>
 <section>
   
     <div className="bg-slate-900 text-white py-8 overflow-y-hidden">
     <div className="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
-      <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 px-8">
+      <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 px-8" data-aos="flip-right" data-aos-duration="900">
         <p className=" text-sky-400 uppercase tracking-loose text-2xl py-1 font-bold">This Website Working Language</p>
         {/* <p className="text-xl md:text-xl leading-normal md:leading-relaxed mb-2 ps-1">Working Process</p> */}
         <p className="text-md md:text-base text-gray-50 mb-4 ">
@@ -44,7 +49,7 @@ function Skils(){
               style={{left:" 50%", border:" 2px solid #60a5fa"}}></div>
             <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="fade-up-right">
+              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="flip-left" data-aos-duration="900">
                 {/* <p className="mb-3 text-base text-yellow-300">1-6 May, 2021</p> */}
                 <h4 className="mb-3 font-bold text-lg md:text-2xl">Mongodb </h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100" src={mongodb} alt='mongodb'></img>
@@ -52,7 +57,7 @@ function Skils(){
             </div>
             <div className="mb-8 flex justify-between items-center w-full right-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="order-1  w-5/12 px-1 py-4 text-left"data-aos="fade-up-left">
+              <div className="order-1  w-5/12 px-1 py-4 text-left"data-aos="flip-right"data-aos-duration="900">
                 {/* <p className="mb-3 text-base text-yellow-300">6-9 May, 2021</p> */}
                 <h4 className="mb-3 font-bold text-lg md:text-2xl">express js</h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 " src={expressjs} alt='expressjs'></img>
@@ -60,7 +65,7 @@ function Skils(){
             </div>
             <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="fade-up-right">
+              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="flip-left"data-aos-duration="900">
                 {/* <p className="mb-3 text-base text-yellow-300"> 10 May, 2021</p> */}
                 <h4 className="mb-3 font-bold text-lg md:text-2xl">React js</h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 " src={reactjs} alt='reactjs'></img>
@@ -70,7 +75,7 @@ function Skils(){
             <div className="mb-8 flex justify-between items-center w-full right-timeline">
               <div className="order-1 w-5/12"></div>
 
-              <div className="order-1  w-5/12 px-1 py-4"data-aos="fade-up-left">
+              <div className="order-1  w-5/12 px-1 py-4"data-aos="flip-right"data-aos-duration="900">
                 {/* <p className="mb-3 text-base text-yellow-300">12 May, 2021</p> */}
                 <h4 className="mb-3 font-bold  text-lg md:text-2xl text-left">Node js</h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 " src={node} alt='nodejs'/>
@@ -79,7 +84,7 @@ function Skils(){
             </div>
             <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="fade-up-right">
+              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="flip-left"data-aos-duration="900">
                 {/* <p className="mb-3 text-base text-yellow-300"> 10 May, 2021</p> */}
                 <h4 className="mb-3 font-bold text-lg md:text-2xl">Tailwind Css</h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 items-center" src={tailwind} alt='tailwindcss'/>

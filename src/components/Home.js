@@ -14,7 +14,9 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import 'swiper'
-import Helmet from "react-helmet";
+import {HelmetProvider,Helmet} from "react-helmet-async"
+
+// import Helmet from "react-helmet";
 import htmls from "../myimgs/swip/html.png";
 import css from "../myimgs/swip/css.png";
 import JavaScript from "../myimgs/swip/javascript.png";
@@ -73,10 +75,13 @@ function Home() {
         <>
             {/* NEW   CREATING   */}
             <main>
+                <HelmetProvider>
+
                 <Helmet>
 
                     <title>Home</title>
                 </Helmet>
+                </HelmetProvider>
             <div className="relative h-full w-full flex item-center justify-center">
            
                 <div className="absolute flex flex-col justify-around md:justify-center  w-full h-full lg:pb-2">
@@ -119,7 +124,7 @@ function Home() {
                     </div>
                 </div>
                 
-                <video src={video} alt="background video" type="video/mp4" className="brightness-50 w-full h-full -z-10 bg-fixed top-0 overflow-hidden" autoPlay loop muted />
+                <video src={video} alt="background video" type="video/mp4" className="brightness-60 w-full h-full -z-10 bg-fixed top-0 overflow-hidden" autoPlay loop muted />
             </div>
            {/* PRICING TAG */}<section className="bg-gray-700 dark:bg-gray-900">
   <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">

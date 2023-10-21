@@ -8,3 +8,8 @@ export const basicSchema=yup.object().shape({
     userdate: yup.string().required("pease enter Date"),
     usertime: yup.string().required("please enter Time")
 })
+//ADMIN LOGIN
+ export const adminSchema=yup.object().shape({
+    email:yup.string().email("please enter valid email").required("please enter Email"),
+    password: yup.string().required("pease enter password"),
+})

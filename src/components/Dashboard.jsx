@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { PiCodeSimpleFill, } from "react-icons/pi";
 import { BiLogIn } from 'react-icons/bi'
 import { FaCircleChevronRight } from 'react-icons/fa6';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaEdit } from 'react-icons/fa';
 import { SiFiles } from 'react-icons/si';
 import { RiDashboardFill, RiInboxUnarchiveLine, RiAccountCircleLine } from "react-icons/ri";
 import { TbTruckDelivery, TbSettings } from 'react-icons/tb';
-import logouts from '../myimgs/logout.webp';
+import { MdDelete } from 'react-icons/md'
 import Axios from "axios"
+
+
 const Dashboard = () => {
   const [open, setOpen] = useState(true);
   const Menus = [
@@ -32,12 +34,14 @@ const Dashboard = () => {
     setlogout(true)
   };
   //mongodb dada fetching
-  const[users,setusers]=useState([])
-useEffect(()=>{
-  Axios.get("http://localhost:8001/form/")
-  .then(users=>setusers(users.data))
-  .catch(err=>console.log(err))
-},[])
+  const [users, setusers] = useState([])
+  useEffect(() => {
+    Axios.get("http://localhost:8001/form/")
+      .then(users => setusers(users.data))
+      .catch(err => console.log(err))
+  }, [])
+  // Mongodb Delete Function
+
   return (
     <>
       <div className="flex dark:bg-slate-800 bg-gray-700">
@@ -81,112 +85,164 @@ useEffect(()=>{
 
           </ul>
         </div>
-     
-<div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full mt-6">
-    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" className="px-6 py-3">
-                    NAME
+
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full mt-6 px-3">
+          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 px-3">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" className="px-6 py-3 text-sky-500 ">
+                  NAME
                 </th>
-                <th scope="col" className="px-6 py-3">
-                    EMAIL
+                <th scope="col" className="px-6 py-3 text-sky-500">
+                  EMAIL
                 </th>
-                <th scope="col" className="px-6 py-3">
-                    PHONE
+                <th scope="col" className="px-6 py-3 text-sky-500">
+                  PHONE
                 </th>
-                <th scope="col" className="px-6 py-3">
-                    ADDRESS
+                <th scope="col" className="px-6 py-3 text-sky-500">
+                  ADDRESS
                 </th>
-                <th scope="col" className="px-6 py-3">
-                    DATE
+                <th scope="col" className="px-6 py-3 text-sky-500">
+                  DATE
                 </th>
-                <th scope="col" className="px-6 py-3">
-                    TIME
+                <th scope="col" className="px-6 py-3 text-sky-500">
+                  TIME
                 </th>
-                <th scope="col" className="px-6 py-3">
-                  
+                <th scope="col" className="px-6 py-3 text-sky-500">
+                  Actions
                 </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                KOBI KRISNAN
+                  KOBI KRISNAN
                 </th>
-                <td className="px-6 py-4">
-                   KOBI343453@GMAIL.COM
+                <td className="px-6 py-4 text-green-500">
+                  KOBI343453@GMAIL.COM
                 </td>
                 <td className="px-6 py-4">
                   +91 34345 35345
                 </td>
                 <td className="px-6 py-4">
-                 NEW ZLAND
+                  NEW ZLAND
                 </td>
                 <td className="px-6 py-4">
-                 41/45/199
+                  41/45/199
                 </td>
-                
+
                 <td className="px-6 py-4">
-                12.55 AM
+                  12.55 AM
                 </td>
-            </tr>
-          
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td className="pl-2 flex gap-3 mt-1.5">
+                  <div className="w-auto h-auto">
+                    <button className="flex-1 h-full">
+                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-green-500 text-white shadow rounded-lg">
+                        <div>
+                          <FaEdit className=" w-5 h-5" />
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div className="w-auto h-auto">
+                    <div className="flex-1 h-full">
+                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-red-500 text-white shadow rounded-lg">
+                        <div className="relative">
+                          <MdDelete className="w-5 h-5" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                KANNAN
+                  KANNAN
                 </th>
-                <td className="px-6 py-4">
-                   KANNAN343453@GMAIL.COM
+                <td className="px-6 py-4  text-green-500">
+                  KANNAN343453@GMAIL.COM
                 </td>
                 <td className="px-6 py-4">
                   +91 34345 35345
                 </td>
                 <td className="px-6 py-4">
-                 NEW ZLAND
+                  NEW ZLAND
                 </td>
                 <td className="px-6 py-4">
-                 41/45/199
+                  41/45/199
                 </td>
                 <td className="px-6 py-4">
                   12.55 AM
                 </td>
-                <td className="px-6 py-4">
-               
+                <td className="pl-2 flex gap-3 mt-1.5">
+                  <div className="w-auto h-auto">
+                    <button className="flex-1 h-full">
+                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-green-500 text-white shadow rounded-lg">
+                        <div>
+                          <FaEdit className=" w-5 h-5" />
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div className="w-auto h-auto">
+                    <div className="flex-1 h-full">
+                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-red-500 text-white shadow rounded-lg">
+                        <div className="relative">
+                          <MdDelete className="w-5 h-5" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </td>
-            </tr>
-            {users.map((user,index)=>{
+              </tr>
+              {users.map((user, index) => {
+                return (
+                  <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                      {user.username}
+                    </th>
+                    <td className="px-6 py-4">
+                      {user.useremail}
+                    </td>
+                    <td className="px-6 py-4">
+                      {user.userphone}
+                    </td>
+                    <td className="px-6 py-4">
+                      {user.useraddres}
+                    </td>
+                    <td className="px-6 py-4">
+                      {user.userdate}
+                    </td>
+                    <td className="px-6 py-4">
+                      {user.usertime}
 
-            
-           return( <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-               {user.username}
-                </th>
-                <td className="px-6 py-4">
-                {user.useremail}
+                    </td>
+                    <td className="pl-2 flex gap-3 mt-1.5">
+                  <div className="w-auto h-auto">
+                    <button className="flex-1 h-full">
+                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-green-500 text-white shadow rounded-lg">
+                        <div>
+                          <FaEdit className=" w-5 h-5" />
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div className="w-auto h-auto">
+                    <div className="flex-1 h-full">
+                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-red-500 text-white shadow rounded-lg">
+                        <div className="relative">
+                          <MdDelete className="w-5 h-5" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </td>
-                <td className="px-6 py-4">
-                {user.userphone}
-                </td>
-                <td className="px-6 py-4">
-                {user.useraddres}
-                </td>
-                <td className="px-6 py-4">
-                {user.userdate}
-                </td>
-                <td className="px-6 py-4">
-                {user.usertime}
-          
-                </td>
-                 <td className="px-6 py-4">
-                <button>Delete</button>
-          
-                </td>
-            </tr>)
-            })}
-        </tbody>
-    </table>
-</div>
+                  </tr>)
+              })}
+            </tbody>
+          </table>
+        </div>
 
       </div>
     </>

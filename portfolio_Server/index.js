@@ -14,17 +14,20 @@ const connection=mongoose.connection;
 connection.once('open',()=>{
     console.log("mongoose db connected sucessfully");
 })
+// React to mongoDb send Data
 app.post('/form',(req,res)=>{
     const {username,useremail,userphone,useraddres,userdate,usertime}=req.body;
     console.log(username,useremail,userphone,useraddres,userdate,usertime);
     const FormData=new form({username,useremail,userphone,useraddres,userdate,usertime})
     FormData.save();
 })
+// Get the Data from mongoDB
 app.get('/form',(req,res)=>{
     form.find()
     .then(users=>res.json(users))
     .catch(err=>res.json(err))
 })
+
 app.listen('8001',()=>{
     console.log("app running on the port 8001")
 })

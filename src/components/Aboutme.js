@@ -9,7 +9,8 @@ import {SiOracle,SiMaterialdesign,SiAdobephotoshop,SiLinkedin,SiGithub,SiGmail,S
 import {GrDocker} from 'react-icons/gr'
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Helmet from "react-helmet"
+
+import {HelmetProvider,Helmet} from "react-helmet-async"
 function Aboutme() {
     //if protected route  for useNavigate 
     const history =useNavigate();
@@ -28,9 +29,13 @@ function Aboutme() {
       }, [])
     return (
         <>
-        <Helmet>
+        <HelmetProvider>
+        <Helmet >
             <title>About</title>
         </Helmet>
+        </HelmetProvider>
+        
+
             <section className="bg-gray-800 dark:bg-slate-800">
                 <div className="container mx-auto py-4">
                     <div className="grid grid-cols-4 md:grid-cols-12 gap-6">
