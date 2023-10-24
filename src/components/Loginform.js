@@ -10,13 +10,16 @@ import { adminSchema } from "./schemas";
 
 function Loginform() {
     const history = useNavigate();
+    useEffect(() => {
+        if (localStorage.getItem('auth')) history("/Admindashboard")
+    });
     const onSubmit = async (values, action) => {
 
-        if (values.email !== 'siva@gmail.com' || values.password !== 'Siva@2005')
+        if (values.email === 'siva@gmail.com' && values.password === 'Siva@2005'){
             localStorage.setItem('auth', true);
         history("/Admindashboard");
-            action.resetForm()
-
+        action.resetForm();
+        }
     }
 
     //HIDE AND SHOW [PASSWORD]
@@ -24,15 +27,10 @@ function Loginform() {
     const handleShow = () => {
         setHide(!Hide);
     }
-    useEffect(() => {
-        if (localStorage.getItem('auth')) history("/Admindashboard")
-    }, []);
-
     const { values, handleBlur, handleChange, errors, handleSubmit, touched } = useFormik({
         initialValues: {
             email: "",
             password: ""
-
         },
         validationSchema: adminSchema,
         onSubmit

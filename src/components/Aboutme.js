@@ -16,7 +16,7 @@ function Aboutme() {
     const history =useNavigate();
     useEffect(()=>{
         if(localStorage.getItem('auth')) history("/Admindashboard");
-    },[]); 
+    }); 
     //READ MORE OPTIONS unorderlist
     const [isShowMore, setIsShowMore] = useState(false);
 

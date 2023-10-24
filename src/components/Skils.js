@@ -13,7 +13,7 @@ function Skils(){
   const history =useNavigate();
   useEffect(()=>{
       if(localStorage.getItem('auth')) history("/Admindashboard");
-  },[]);
+  });
     useEffect(() => {
         AOS.init();
         AOS.refresh();
