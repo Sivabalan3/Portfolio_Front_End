@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { PiCodeSimpleFill, } from "react-icons/pi";
-import { BiLogIn } from 'react-icons/bi'
+import { BiLogIn } from 'react-icons/bi';
 import { FaCircleChevronRight } from 'react-icons/fa6';
 import { FaSearch, FaEdit } from 'react-icons/fa';
 import { SiFiles } from 'react-icons/si';
 import { RiDashboardFill, RiInboxUnarchiveLine, RiAccountCircleLine } from "react-icons/ri";
 import { TbTruckDelivery, TbSettings } from 'react-icons/tb';
-import { MdDelete } from 'react-icons/md'
-import Axios from "axios"
+import { MdDelete } from 'react-icons/md';
+import Axios from "axios";
 
 
 const Dashboard = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const Menus = [
     { title: "Dashboard", icon: <RiDashboardFill className="w-8 h-8" /> },
     { title: "Inbox", icon: <RiInboxUnarchiveLine className="w-8 h-8" /> },
@@ -202,7 +202,7 @@ const Dashboard = () => {
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                       {user.username}
                     </th>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 text-green-500">
                       {user.useremail}
                     </td>
                     <td className="px-6 py-4">
@@ -228,7 +228,7 @@ const Dashboard = () => {
                       </div>
                     </button>
                   </div>
-                  <div className="w-auto h-auto">
+                  <div className="w-auto h-auto cursor:pointer">
                     <div className="flex-1 h-full">
                       <div className="flex items-center justify-center flex-1 h-full p-2 bg-red-500 text-white shadow rounded-lg">
                         <div className="relative">
