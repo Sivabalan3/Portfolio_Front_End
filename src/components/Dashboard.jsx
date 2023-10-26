@@ -13,6 +13,7 @@ import Axios from "axios";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
+  const [Search,setSearch]=useState("")
   const Menus = [
     { title: "Dashboard", icon: <RiDashboardFill className="w-8 h-8" /> },
     { title: "Inbox", icon: <RiInboxUnarchiveLine className="w-8 h-8" /> },
@@ -25,14 +26,17 @@ const Dashboard = () => {
   ];
   const history = useNavigate();
   const [logout, setlogout] = useState(false);
+
   useEffect(() => {
     if (!localStorage.getItem('auth')) history("/loginpage")
   }, [logout]);
+
   const logouthandler = (e) => {
     e.preventDefault();
     localStorage.removeItem("auth");
     setlogout(true)
   };
+
   //mongodb dada fetching
   const [users, setusers] = useState([])
   useEffect(() => {
@@ -40,7 +44,7 @@ const Dashboard = () => {
       .then(users => setusers(users.data))
       .catch(err => console.log(err))
   }, [])
-  // Mongodb Delete Function
+
 
   return (
     <>
@@ -86,7 +90,15 @@ const Dashboard = () => {
           </ul>
         </div>
 
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full mt-6 px-3">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full mt-6 px-3 ">
+          <div className="flex mb-3">
+
+          <label className="text-2xl text-bold dark:text-white ps-6 pe-2">Search Here :</label>
+            <input   className= "w-64  px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-400 focus:border-sky-400 border-2  border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
+                   placeholder="Search" onChange={(ev)=>setSearch(ev.target.value)}    
+                   />
+              </div>
+            {/* <input placeholder="Search" onChange={(ev)=>setSearch(ev.target.value)}/> */}
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 px-3">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -196,7 +208,9 @@ const Dashboard = () => {
                   </div>
                 </td>
               </tr>
-              {users.map((user, index) => {
+              {users.filter((user)=>{
+                return Search.toLowerCase()===''?user:user.username.toLowerCase().includes(Search);
+              }).map((user, index) => {
                 return (
                   <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -228,7 +242,7 @@ const Dashboard = () => {
                       </div>
                     </button>
                   </div>
-                  <div className="w-auto h-auto cursor:pointer">
+                  <div className="w-auto h-auto cursor-pointer">
                     <div className="flex-1 h-full">
                       <div className="flex items-center justify-center flex-1 h-full p-2 bg-red-500 text-white shadow rounded-lg">
                         <div className="relative">
