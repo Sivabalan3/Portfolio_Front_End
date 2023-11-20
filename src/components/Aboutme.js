@@ -43,7 +43,7 @@ function Aboutme() {
                             <div data-aos=" fade-right" className=" text-slate-200 dark:bg-slate-900 dark:text-slate-300  rounded-lg p-6 h-full border  border-sky-500 shadow-2xl">
                                 <div className="flex flex-col items-center">
 
-                                    {/* <img src={proimage} alt="profile" className="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"/> */}
+                                    {/* <img src={proimage} alt="profile" className="w-44 h-44 bg-gray-300 rounded-full mb-4 shrink-0"/> */}
 
                                     
                                     <h1 className="text-xl font-bold">Sivabalan M</h1>

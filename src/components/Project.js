@@ -15,10 +15,9 @@ function Project() {
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Project - 1</h2>
                   <h1 className="title-font text-lg font-medium text-gray-600 mb-3">CRUD APP</h1>
-                  <p className="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                  <p className="leading-relaxed mb-3">A React CRUD app refers to a web application built using the React JavaScript library that allows users to Create, Read, Update, and Delete data. It provides a user-friendly interface for managing data operations. The term "short and neat" implies that the app is concise, well-structured, and visually appealing. It likely follows best practices in code organization and design, providing a seamless user experience while efficiently managing data operations.</p>
                   <div className="flex items-center flex-wrap ">
-                    <button className="bg-gradient-to-r from-cyan-400 to-blue-400 hover:scale-105 drop-shadow-md  shadow-cla-blue px-4 py-1 rounded-lg">Live Site</button>
-                   
+                    <button className="bg-gradient-to-r from-cyan-400 to-blue-400 hover:scale-105 drop-shadow-md  shadow-cla-blue px-4 py-1 rounded-lg"><a href='https://sivabalan3.github.io/react-crud/'>Live Site</a></button>              
                   </div>
                 </div>
               </div>
@@ -29,7 +28,7 @@ function Project() {
                   <div className="p-6">
                     <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">Project - 2</h2>
                     <h1 className="title-font text-lg font-medium text-gray-600 mb-3">WHEATHER APP</h1>
-                    <p className="leading-relaxed mb-3">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
+                    <p className="leading-relaxed mb-3">The React Weather app is a short and neat application built using the React framework.The app retrieves weather data from an API and displays it on the user interface. It allows users to search for the weather of a specific location by entering the city name or ZIP code. The app dynamically updates the weather information in real-time, providing accurate and up-to-date forecasts. Overall, the React Weather app is a concise and efficient tool for accessing weather information.</p>
                     <div className="flex items-center flex-wrap ">
                       <button className="bg-gradient-to-r from-orange-300 to-amber-400 hover:scale-105 drop-shadow-md shadow-cla-violate px-4 py-1 rounded-lg">Live site</button>
                      

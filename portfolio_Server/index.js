@@ -2,6 +2,7 @@ const express =require('express')
 const mongoose =require("mongoose")
 const cors = require('cors')
 require('dotenv').config();
+const router = express.Router();
 
 const form=require('./modals/Form.model')
 
@@ -27,7 +28,7 @@ app.get('/form',(req,res)=>{
     .then(users=>res.json(users))
     .catch(err=>res.json(err))
 })
-
+//Delete the Data
 app.listen('8001',()=>{
     console.log("app running on the port 8001")
 })

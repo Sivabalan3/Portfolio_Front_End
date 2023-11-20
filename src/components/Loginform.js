@@ -6,6 +6,7 @@ import { HelmetProvider, Helmet } from "react-helmet-async"
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { adminSchema } from "./schemas";
+import './error.css'
 
 
 function Loginform() {
@@ -17,8 +18,8 @@ function Loginform() {
 
         if (values.email === 'siva@gmail.com' && values.password === 'Siva@2005'){
             localStorage.setItem('auth', true);
-        history("/Admindashboard");
-        action.resetForm();
+            history("/Admindashboard");
+            action.resetForm();
         }
     }
 
@@ -39,8 +40,6 @@ function Loginform() {
     return (
         <>
             <HelmetProvider>
-
-
                 <Helmet>
                     <title>Admin</title>
                 </Helmet>
@@ -68,7 +67,7 @@ function Loginform() {
                                     </div>
 
 
-                                    <input type="text" name="email" className="px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" placeholder="Username"
+                                    <input type="text" name="email" className={errors.email && touched.email ? "input-error px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" : "px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-500 focus:border-sky-500 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"} placeholder="Email"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.email}
@@ -84,7 +83,7 @@ function Loginform() {
                                         }
                                     </div>
 
-                                    <input type={Hide ? "text" : 'password'} name="password" className="px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-400 focus:border-sky-400 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" placeholder="Password"
+                                    <input type={Hide ? "text" : 'password'} name="password" className={errors.password && touched.password ? "input-error px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-400 focus:border-sky-400 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white" : "px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-400 focus:border-sky-400 border-2 w-full border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"} placeholder="Password"
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         value={values.password}
@@ -94,7 +93,7 @@ function Loginform() {
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-start">
                                         <div className="flex items-center h-5">
-                                            <input  id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="" />
+                                            <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="" />
                                         </div>
                                         <div className="ml-3 text-sm">
                                             <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Remember me</label>

@@ -44,8 +44,6 @@ const Dashboard = () => {
       .then(users => setusers(users.data))
       .catch(err => console.log(err))
   }, [])
-
-
   return (
     <>
       <div className="flex dark:bg-slate-800 bg-gray-700">
@@ -242,7 +240,9 @@ const Dashboard = () => {
                       </div>
                     </button>
                   </div>
-                  <div className="w-auto h-auto cursor-pointer">
+                  {/* <button className="w-auto h-auto cursor-pointer" type="button"
+                  onClick={onDeleteClick(user._id)}
+                  >
                     <div className="flex-1 h-full">
                       <div className="flex items-center justify-center flex-1 h-full p-2 bg-red-500 text-white shadow rounded-lg">
                         <div className="relative">
@@ -250,7 +250,8 @@ const Dashboard = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </button> */}
+                  <button  >Delete</button>
                 </td>
                   </tr>)
               })}
