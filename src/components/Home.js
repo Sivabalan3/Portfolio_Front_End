@@ -202,7 +202,7 @@ function Home() {
                                     </li>
                                     <li className="flex items-center space-x-3">
                                         <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Languages : <span className="font-semibold">React Js, Next js</span></span>
+                                        <span>Languages : <span className="font-semibold">React Js, Next js,redu</span></span>
                                     </li>
                                 </ul>
                                 <Link to="/userform" className="px-5 py-2.5 relative rounded group  text-white font-medium inline-block">

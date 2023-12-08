@@ -6,6 +6,7 @@ import { HelmetProvider, Helmet } from "react-helmet-async"
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { adminSchema } from "./schemas";
+import MySwal from 'sweetalert2'
 import './error.css'
 
 
@@ -16,10 +17,24 @@ function Loginform() {
     });
     const onSubmit = async (values, action) => {
 
-        if (values.email === 'siva@gmail.com' && values.password === 'Siva@2005'){
+        if (values.email === 'siva@gmail.com' && values.password === 'Siva@2005') {
             localStorage.setItem('auth', true);
             history("/Admindashboard");
-            action.resetForm();
+            MySwal.fire({
+                icon: 'success',
+                title: 'Successfully logged in!',
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            action.resetForm()
+        }
+        else {
+            MySwal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Incorrect email or password.',
+
+            });
         }
     }
 
@@ -79,7 +94,7 @@ function Loginform() {
                                     <div className="inline-block justify-end relative top-8 float-right right-3">
 
                                         {
-                                            Hide ? <EyeIcon className="w-5 h-5 text-green-500 hover:pulse-ping" onClick={handleShow} /> : <EyeSlashIcon className="w-5 h-5 text-red-500" onClick={handleShow} />
+                                            Hide ? <EyeIcon className="w-5 h-5  text-red-500 hover:pulse-ping" onClick={handleShow} /> : <EyeSlashIcon className="w-5 h-5 text-green-500" onClick={handleShow} />
                                         }
                                     </div>
 
