@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import user from '../myimgs/register.webp'
 import MySwal from 'sweetalert2'
 import Axios from "axios";
@@ -38,6 +38,10 @@ function Userform() {
     onSubmit
   })
   // console.log(errors)
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+  }, []);
   return (
 
     <>

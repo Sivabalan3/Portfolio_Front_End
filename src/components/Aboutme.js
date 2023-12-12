@@ -2,11 +2,15 @@ import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // import proimage from '../myimgs/jeeva logo.webp'
 import {
-    BiChevronsDown, BiLogoReact, BiLogoJavascript, BiLogoGithub, BiLogoGit,
-    BiLogoHtml5, BiLogoJava, BiLogoMicrosoft, BiLogoTailwindCss, BiLogoBootstrap, BiSolidFileJson
+    BiChevronsDown, BiLogoReact, 
+    BiLogoJavascript,BiLogoGithub,  
+    BiLogoGit,BiLogoHtml5, 
+    BiLogoJava, BiLogoMicrosoft, 
+    BiLogoTailwindCss, BiLogoBootstrap, BiSolidFileJson
 } from 'react-icons/bi';
+import Resum from "../myimgs/Resume.pdf";
 import {SiOracle,SiMaterialdesign,SiAdobephotoshop,SiLinkedin,SiGithub,SiGmail,SiWhatsapp,SiInstagram} from 'react-icons/si'
-import {GrDocker} from 'react-icons/gr'
+import {GrDocker} from 'react-icons/gr';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -27,6 +31,25 @@ function Aboutme() {
         AOS.init();
         AOS.refresh();
       }, [])
+     
+      //Disable Right Click Events
+      useEffect(() => {
+        const handleContextMenu = (event) => {
+            event.preventDefault();
+        };
+
+        window.addEventListener('contextmenu', handleContextMenu);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener('contextmenu', handleContextMenu);
+        };
+    }, []);
+
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+      }, []);
     return (
         <>
         <HelmetProvider>
@@ -40,30 +63,39 @@ function Aboutme() {
                 <div className="container mx-auto py-4">
                     <div className="grid grid-cols-4 md:grid-cols-12 gap-6">
                         <div className="col-span-5 md:col-span-3 px-2">
-                            <div data-aos=" fade-right" className=" text-slate-200 dark:bg-slate-900 dark:text-slate-300  rounded-lg p-6 h-full border  border-sky-500 shadow-2xl">
+                            <div data-aos="fade-up" data-aos-duration="2500" className=" text-slate-200 dark:bg-slate-900 dark:text-slate-300  rounded-lg p-6 h-full border  border-sky-500 shadow-2xl">
                                 <div className="flex flex-col items-center">
 
-                                    {/* <img src={proimage} alt="profile" className="w-44 h-44 bg-gray-300 rounded-full mb-4 shrink-0"/> */}
+                                    {/* <img src={proimage} alt="profile" className="  cursor-none w-44 h-44 bg-gray-300 rounded-full mb-4 shrink-0"/> */}
 
                                     
                                     <h1 className="text-xl font-bold">Sivabalan M</h1>
                                     <p className=" text-amber-300">React js Developer</p>
                                     <div className="mt-6 flex flex-wrap md:gap-4 gap-2 justify-center">
-                                        <button className="relative inline-flex items-center justify-center p-4 px-4 py-1.5 overflow-hidden font-medium text-sky-300 transition duration-300 ease-out border-2 border-sky-400 rounded-full shadow-md group">
+                                        <a   href={Resum}
+                                            download="Resume"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="relative inline-flex items-center justify-center p-4 px-4 py-1.5 overflow-hidden font-medium text-sky-300 transition duration-300 ease-out border-2 border-sky-400 rounded-full shadow-md group">
                                             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-y-full bg-sky-400 group-hover:translate-y-0 ease">
                                                 <BiChevronsDown className="w-7 h-7 text-white" />
                                             </span>
-                                            <span className="absolute flex items-center justify-center w-full h-full text-sky-100 transition-all duration-300 transform group-hover:translate-x-full ease">Resume</span>
+                                            <span className="absolute flex items-center justify-center w-full h-full text-sky-100 transition-all duration-300 transform group-hover:translate-x-full ease" >Resume</span>
                                             <span className="relative invisible">Resume</span>
-                                        </button>
+                                        </a>
 
-                                        <button className="relative inline-flex items-center justify-center p-4 px-4 py-1.5 overflow-hidden font-medium text-sky-300 transition duration-300 ease-out border-2 border-sky-400 rounded-full shadow-md group">
+                                        <a 
+                                         href={Resum}
+                                         download="Resume"
+                                         target="_blank"
+                                         rel="noreferrer"
+                                        className="relative inline-flex items-center justify-center p-4 px-4 py-1.5 overflow-hidden font-medium text-sky-300 transition duration-300 ease-out border-2 border-sky-400 rounded-full shadow-md group">
                                             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-y-full bg-sky-400 group-hover:translate-y-0 ease">
                                                 <BiChevronsDown className="w-7 h-7 text-white" />
                                             </span>
                                             <span className="absolute flex items-center justify-center w-full h-full text-sky-100 transition-all duration-300 transform group-hover:translate-x-full ease">Contact</span>
                                             <span className="relative invisible">Contact</span>
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -110,28 +142,28 @@ function Aboutme() {
                             </div>
                         </div>
                         <div className="col-span-5 md:col-span-9  px-2">
-                            <div data-aos="fade-right" className=" text-slate-200 rounded-lg p-6 dark:bg-slate-900 dark:text-slate-300 border border-sky-500 shadow-2xl">
+                            <div data-aos="fade-right" data-aos-duration="2000" className=" text-slate-200 rounded-lg p-6 dark:bg-slate-900 dark:text-slate-300 border border-sky-500 shadow-2xl">
                                 <h2 className="text-xl font-bold mb-4 text-sky-400 underline underline-offset-4 tracking-wider">About Me</h2>
-                                <p className="text-lg">Iam a React JS developer, I am passionate about creating unique and intuitive user experiences through responsive web design and efficient code. With several years of experience in this field, I have honed my skills in building scalable, maintainable, and robust web applications using React, Redux, and other related technologies. Additionally, I am an photoshop designer and who can work well both independently and collaboratively in a fast-paced environment while prioritizing deadline-driven tasks. In my free time, I enjoy staying current with the latest React updates and exploring new programming concepts to enhance my knowledge and expertise.
+                                <p className="text-lg" data-aos="flip-left" data-aos-duration="1000" >Iam a React JS developer, I am passionate about creating unique and intuitive user experiences through responsive web design and efficient code. With several years of experience in this field, I have honed my skills in building scalable, maintainable, and robust web applications using React, Redux, and other related technologies. Additionally, I am an photoshop designer and who can work well both independently and collaboratively in a fast-paced environment while prioritizing deadline-driven tasks. In my free time, I enjoy staying current with the latest React updates and exploring new programming concepts to enhance my knowledge and expertise.
                                 </p>
 
                                 <h3 className="font-semibold text-center mt-3 -mb-2">
                                     Find me on
                                 </h3>
                                 <div className="flex justify-center items-center gap-6 my-6">
-                                    <a className="text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds LinkedIn" href="*"
+                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds LinkedIn" href="*"
                                         ><SiLinkedin/>
                                     </a>
-                                    <a className="text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds YouTube" href="*"
+                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds YouTube" href="*"
                                         ><SiGithub/>
                                     </a>
-                                    <a className="text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds Facebook" href="*"
+                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds Facebook" href="*"
                                         ><SiGmail/>
                                     </a>
-                                    <a className="text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds Instagram" href="*"
+                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds Instagram" href="*"
                                         ><SiInstagram/>
                                     </a>
-                                    <a className="text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds Twitter" href="*"
+                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds Twitter" href="*"
                                         ><SiWhatsapp/>
                                     </a>
                                 </div>
@@ -140,7 +172,7 @@ function Aboutme() {
                             
                                 <h2 className=" text-xl font-bold mt-3 mb-4 text-sky-400 underline underline-offset-4 tracking-wider">Information</h2>
                                 <div className="mb-4">
-                                    <div className="flex flex-col  text-lg dark:text-slate-200 text-white">
+                                    <div data-aos="fade-left" data-aos-duration="1000" className="flex flex-col  text-lg dark:text-slate-200 text-white">
                                         <h2><span className="font-semibold">Name : </span> Sivabalan M</h2>
                                         <h2><span className="font-semibold">Age :</span> 20</h2>
                                         <h2><span className="font-semibold">sex :</span> Male</h2>
@@ -156,10 +188,10 @@ function Aboutme() {
                                         <span className=" font-bold text-xl text-sky-500 underline underline-offset-4 tracking-wider">Education</span>
                                         
                                     </div>
-                                    <div className="text-white dark:text-slate-200 text-lg">
+                                    <div data-aos="fade-right" data-aos-duration="1000" className="text-white dark:text-slate-200 text-lg">
 
                                         <h1><span className="font-semibold">College :</span> Bharath*****Engineering College</h1>
-                                        <h2><span className="font-semibold">Cource :</span> Computer Science Engineering</h2>
+                                        <h2><span className="font-semibold">Cource :</span> Computer Science & Engineering</h2>
                                         <h2><span className="font-semibold">Batch :</span> 2020 - 2024</h2>
                                         <h2><span className="font-semibold">School :</span> VM*****boys Government Higher Secondary School</h2>
                                     </div>

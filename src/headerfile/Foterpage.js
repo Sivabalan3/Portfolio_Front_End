@@ -1,4 +1,5 @@
 import React from "react";
+// import jeeva from '../myimgs/jeeva logo.webp'
 import {
     FaWhatsapp,
     FaFacebook,
@@ -12,8 +13,8 @@ function Foterpage (){
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
               <a href="*" className="flex items-center">
-                  {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="FlowBite Logo" /> */}
-                  <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Sivabalan</span>
+                  {/* <img src={jeeva} className="h-12 w-12 mr-3 rounded-full" alt=" Logo" /> */}
+                  <span className=" self-center text-2xl font-semibold whitespace-nowrap text-white">Sivabalan</span>
               </a>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -57,23 +58,23 @@ function Foterpage (){
           <span className="text-sm  sm:text-center dtext-gray-400">© 2023 <a href="/t" className="hover:underline">sivabalan™</a>. All Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
-              <a href="*" className=" hover:text-gray-900 dark:hover:text-violet-500 text-white">
+              <a href="*" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 text-white">
               <FaFacebook className='text-2xl'/>
                   <span className="sr-only">Facebook page</span>
               </a>
-              <a href="*" className=" hover:text-gray-900 dark:hover:text-violet-500 text-white">
+              <a href="*" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 text-white">
                  <FaWhatsapp className="text-2xl"/>
                   <span className="sr-only">Discord community</span>
               </a>
-              <a href="*" className=" hover:text-gray-900 dark:hover:text-violet-500 text-white">
+              <a href="*" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 text-white">
                  <FaTwitter className="text-2xl"/>
                   <span className="sr-only">Twitter page</span>
               </a>
-              <a href="*" className=" hover:text-gray-900 dark:hover:text-violet-500 text-white">
+              <a href="*" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 text-white">
                   <FaGithub className="text-2xl"/>
                   <span className="sr-only">GitHub account</span>
               </a>
-              <a href="*" className=" hover:text-gray-900 dark:hover:text-violet-500 dark:text-white">
+              <a href="*" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 dark:text-white">
                  <FaInstagram className="text-2xl"/>
                   <span className="sr-only">Instagram</span>
               </a>

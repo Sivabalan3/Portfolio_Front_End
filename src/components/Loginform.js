@@ -1,6 +1,5 @@
+import React, { useEffect,useState } from "react";
 import { CheckIcon, UserIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import React, { useEffect } from "react";
-import { useState } from "react";
 import loginimage from '../myimgs/back-loginwebp.webp';
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import { useNavigate } from "react-router-dom";
@@ -51,6 +50,10 @@ function Loginform() {
         validationSchema: adminSchema,
         onSubmit
     })
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+      }, []);
 
     return (
         <>

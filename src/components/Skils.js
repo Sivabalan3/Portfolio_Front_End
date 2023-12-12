@@ -18,6 +18,10 @@ function Skils(){
         AOS.init();
         AOS.refresh();
       }, [])
+      useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+      }, []);
     return(
     <>
     <HelmetProvider>
@@ -49,7 +53,7 @@ function Skils(){
               style={{left:" 50%", border:" 2px solid #60a5fa"}}></div>
             <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="flip-left" data-aos-duration="900">
+              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="flip-left" data-aos-duration="1000">
                 {/* <p className="mb-3 text-base text-yellow-300">1-6 May, 2021</p> */}
                 <h4 className="mb-3 font-bold text-lg md:text-2xl">Mongodb </h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100" src={mongodb} alt='mongodb'></img>
@@ -57,7 +61,7 @@ function Skils(){
             </div>
             <div className="mb-8 flex justify-between items-center w-full right-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="order-1  w-5/12 px-1 py-4 text-left"data-aos="flip-right"data-aos-duration="900">
+              <div className="order-1  w-5/12 px-1 py-4 text-left"data-aos="flip-right"data-aos-duration="1000">
                 {/* <p className="mb-3 text-base text-yellow-300">6-9 May, 2021</p> */}
                 <h4 className="mb-3 font-bold text-lg md:text-2xl">express js</h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 " src={expressjs} alt='expressjs'></img>
@@ -65,7 +69,7 @@ function Skils(){
             </div>
             <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="flip-left"data-aos-duration="900">
+              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="flip-left"data-aos-duration="1000">
                 {/* <p className="mb-3 text-base text-yellow-300"> 10 May, 2021</p> */}
                 <h4 className="mb-3 font-bold text-lg md:text-2xl">React js</h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 " src={reactjs} alt='reactjs'></img>
@@ -75,7 +79,7 @@ function Skils(){
             <div className="mb-8 flex justify-between items-center w-full right-timeline">
               <div className="order-1 w-5/12"></div>
 
-              <div className="order-1  w-5/12 px-1 py-4"data-aos="flip-right"data-aos-duration="900">
+              <div className="order-1  w-5/12 px-1 py-4"data-aos="flip-right"data-aos-duration="1000">
                 {/* <p className="mb-3 text-base text-yellow-300">12 May, 2021</p> */}
                 <h4 className="mb-3 font-bold  text-lg md:text-2xl text-left">Node js</h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 " src={node} alt='nodejs'/>
@@ -84,7 +88,7 @@ function Skils(){
             </div>
             <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
               <div className="order-1 w-5/12"></div>
-              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="flip-left"data-aos-duration="900">
+              <div className="order-1 w-5/12 px-1 py-4 text-right" data-aos="flip-left"data-aos-duration="1000">
                 {/* <p className="mb-3 text-base text-yellow-300"> 10 May, 2021</p> */}
                 <h4 className="mb-3 font-bold text-lg md:text-2xl">Tailwind Css</h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 items-center" src={tailwind} alt='tailwindcss'/>

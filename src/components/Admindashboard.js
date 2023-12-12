@@ -33,10 +33,10 @@ const [logout,setlogout]= useState(false);
 			<HelmetProvider>
 
 		<Helmet>
-			<title>Admin</title>
+			<title>Admin2</title>
 		</Helmet>
 			</HelmetProvider>
-		<section className=" z-30 w-full h-screen dark:bg-slate-900 overflow-hidden">
+		{/* <section className=" z-30 w-full h-screen dark:bg-slate-900 overflow-hidden">
 		      <button data-collapse-toggle="mobile-menu-2" type="button" className="float-right p-2 right-6 bg-slate-700 rounded-full" aria-controls="mobile-menu-2" aria-expanded="false" onClick={handleclick}>
                 {
                   icon ?<XMarkIcon className="text-slate-300 w-7 h-7" />:
@@ -48,9 +48,9 @@ const [logout,setlogout]= useState(false);
 	
 			<img className="my-2 py-3 lg:w-3/4 lg:h-3/4 rounded-xl " src={logoutsimages } alt="logout"></img>
 			</div>
-		</section>
+		</section> */}
 		
-       <div className={icon ?"transition duration-300 ease-in-out origin-top-left absolute top-[60px] z-20 flex flex-col h-screen p-3 w-60 dark:bg-gray-900 border-r-4 border-white dark:text-gray-100 bg-slate-700 text-white":"hidden"}>
+       {/* <div className={icon ?"transition duration-300 ease-in-out origin-top-left absolute top-[60px] z-20 flex flex-col h-screen p-3 w-60 dark:bg-gray-900 border-r-4 border-white dark:text-gray-100 bg-slate-700 text-white":"hidden"}>
 	<div className="space-y-3">
 		<div className="flex items-center justify-between">
 			<h2>Dashboard</h2>
@@ -104,8 +104,8 @@ const [logout,setlogout]= useState(false);
 				</li>
 				<li className="rounded-sm cursor-pointer" onClick={logouthandler}>
 					<div rel="noopener noreferrer" className="flex items-center p-2 space-x-3 rounded-md cursor-pointer">
-						{/* <BiLogIn className="w-6 h-6"/>
-						<span>Logout</span> */}
+						<BiLogIn className="w-6 h-6"/>
+						<span>Logout</span>
 						<button className="relative inline-flex items-center justify-center p-4 px-8 py-2 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out border-2 border-sky-400 rounded-full shadow-md group">
 <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-slate-900 group-hover:translate-x-0 ease">
 <BiLogIn className="w-6 h-6"/>
@@ -127,7 +127,7 @@ const [logout,setlogout]= useState(false);
 			</span>
 		</div>
 	</div>
-</div>
+</div> */}
 </main>
         </>
     );

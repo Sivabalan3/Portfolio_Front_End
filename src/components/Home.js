@@ -69,6 +69,53 @@ function Home() {
         AOS.init();
         AOS.refresh();
     }, [])
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, []);
+
+    const images = [
+        { img: htmls }, { img: css }, { img: jsons, cls: "dark:invert drop-shadow-2xl" }, { img: JavaScript }, { img: mongodb },
+        { img: expressjss }, { img: reacts }, { img: nodejss }, { img: docker }, { img: github, cls: "dark:invert drop-shadow-2xl" },
+        { img: reduxs }, { img: gits }, { img: bootstrab }, { img: tailwindcss }, { img: metrialui }, { img: photoshop }, { img: msoffice }
+    ]
+    const card = [
+        {cls:" xl:p-8 flex flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-800  rounded-lg border border-sky-400 shadow  dark:bg-gray-800 dark:text-white", 
+        title: "Static website & front end", 
+        subtitle: "Best option for personal use & for your next project.", 
+        price: "₹2999", 
+        developer: "1 developer",
+         month: "6 months", 
+         language: "HTML, CSS, JavaScriptT", 
+         btn: "Register Now",
+         Anime:"fade-right",
+         duration:1000 ,
+        },
+
+        {cls:"xl:py-8 xl:px-5 flex flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-800  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white", 
+        title: "Dynamic Website & front-end",
+         subtitle: "Relevant for multiple users, extended & premium support.", 
+        price: "₹6999", 
+        developer: "4 developer", 
+        month: "12 months", 
+        language: "React Js, Next js,Redux", 
+        btn: "Register Now",
+    
+        Anime:"fade-up",
+        duration:1500 ,},
+
+        {cls:"xl:py-8 xl:px-5 flex flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-800  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white", 
+        title: "Dynamic Website & Back End",
+         subtitle: "Best option for personal use & for your next project.", 
+        price: "₹19999", 
+        developer: "6+ developer", 
+        month: "18 months", 
+        language: "MERN STACK", 
+        btn: "Register Now",
+        Anime:"fade-left",
+        duration:2000 ,
+    }
+    ]
     return (
         <>
             {/* NEW   CREATING   */}
@@ -76,10 +123,11 @@ function Home() {
                 <HelmetProvider>
 
                     <Helmet>
-
                         <title>Home</title>
                     </Helmet>
+
                 </HelmetProvider>
+
                 <div className="relative h-full w-full flex item-center justify-center">
 
                     <div className="absolute flex flex-col justify-around md:justify-center  w-full h-full lg:pb-2">
@@ -121,138 +169,63 @@ function Home() {
 
                         </div>
                     </div>
-
+                    
                     <video src={video} alt="background video" type="video/mp4" className="brightness-60 w-full h-full -z-10 bg-fixed top-0 overflow-hidden" autoPlay loop muted />
                 </div>
                 {/* PRICING TAG */}<section className="bg-gray-700 dark:bg-gray-900">
                     <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
-                        <div className="mx-auto  text-center mb-8 lg:mb-12">
+                        <div data-aos="fade-up" data-aos-duration="700" className="mx-auto  text-center mb-8 lg:mb-12">
                             <h2 className="mb-4 text-2xl lg:text-4xl tracking-tight font-extrabold   text-sky-400">Designed for business teams like yours</h2>
                             <p className="mb-5 font-light text-gray-300 sm:text-xl dark:text-gray-400">Looking for a skilled website developer? Look no further! Our team of expert developers can create a professional website that meets your needs and exceeds your expectations. Whether you need a simple brochure site or a complex e-commerce platform, we've got the experience and technical know-how to make it happen. We use the latest technologies and best practices to ensure your site is secure, responsive, and visually stunning. Contact us today to discuss your project and get a free quote!</p>
                         </div>
-                        <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+            
+                        <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 ">
+                            {card.map((cards) => (
 
-                            <div data-aos="fade-right" className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-800  rounded-lg border border-sky-400 shadow  xl:p-8 dark:bg-gray-800 dark:text-white">
-                                <h3 className="mb-4 text-xl  sm:text-2xl font-semibold text-sky-400"> Static website & front end</h3>
-                                <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best option for personal use & for your next project.</p>
-                                <div className="flex justify-center items-baseline my-8">
-                                    <span className="mr-2 text-5xl font-extrabold">₹2999</span>
-                                    {/* <span className="text-gray-500 dark:text-gray-400">/month</span> */}
+
+                                <div data-aos={cards.Anime} data-aos-duration={cards.duration} className={cards.cls}>
+                                    <h3 className="mb-4 text-xl  sm:text-2xl font-semibold text-sky-400"> {cards.title}</h3>
+                                    <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">{cards.subtitle}</p>
+                                    <div className="flex justify-center items-baseline my-8">
+                                        <span className="mr-2 text-5xl font-extrabold">{cards.price}</span>
+                                        {/* <span className="text-gray-500 dark:text-gray-400">/month</span> */}
+                                    </div>
+
+                                    <ul className="mb-8 space-y-4 text-left">
+                                        <li className="flex items-center space-x-3">
+                                            <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
+                                            <span>Individual configuration</span>
+                                        </li>
+                                        <li className="flex items-center space-x-3">
+
+                                            <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
+                                            <span>No setup, or hidden fees</span>
+                                        </li>
+                                        <li className="flex items-center space-x-3">
+                                            <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
+                                            <span>Team size : <span className="font-semibold">{cards.developer}</span></span>
+                                        </li>
+
+                                        <li className="flex items-center space-x-3">
+
+                                            <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
+                                            <span>Free updates : <span className="font-semibold">{cards.month}</span></span>
+                                        </li>
+                                        <li className="flex items-center space-x-3">
+                                            <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
+                                            <span>Languages : <span className="font-semibold">{cards.language}</span></span>
+                                        </li>
+                                    </ul>
+                                    <Link to="/userform" className="px-5 py-2.5 relative rounded group  text-white font-medium inline-block">
+                                        <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-sky-400 to-blue-500"></span>
+                                        <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
+                                        <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
+                                        <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-sky-600 from-blue-500"></span>
+                                        <span className="relative flex gap-2 justify-center">{cards.btn}<FaArrowCircleDown className="mt-1.5" /></span>
+                                    </Link>
+
                                 </div>
-
-                                <ul className="mb-8 space-y-4 text-left">
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Individual configuration</span>
-                                    </li>
-                                    <li className="flex items-center space-x-3">
-
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>No setup, or hidden fees</span>
-                                    </li>
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Team size : <span className="font-semibold">1 developer</span></span>
-                                    </li>
-
-                                    <li className="flex items-center space-x-3">
-
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Free updates : <span className="font-semibold">6 months</span></span>
-                                    </li>
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Languages : <span className="font-semibold">HTML, CSS, JAVASCRIPT</span></span>
-                                    </li>
-                                </ul>
-                                <Link to="/userform" className="px-5 py-2.5 relative rounded group  text-white font-medium inline-block">
-                                    <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-sky-400 to-blue-500"></span>
-                                    <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
-                                    <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
-                                    <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-sky-600 from-blue-500"></span>
-                                    <span className="relative flex gap-2 justify-center">Register Now<FaArrowCircleDown className="mt-1.5" /></span>
-                                </Link>
-                            </div>
-
-                            <div data-aos="fade-right" className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-800 rounded-lg border  border-sky-400 shadow xl:py-8 xl:px-5 dark:bg-gray-800 dark:text-white">
-                                <h3 className="mb-4 text-xl  sm:text-2xl font-semibold text-sky-400">Dynamic Website & front-end</h3>
-                                <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Relevant for multiple users, extended & premium support.</p>
-                                <div className="flex justify-center items-baseline my-8">
-                                    <span className="mr-2 text-5xl font-extrabold">₹6999</span>
-                                    {/* <span className="text-gray-500 dark:text-gray-400">/month</span> */}
-                                </div>
-
-                                <ul className="mb-8 space-y-4 text-left">
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Individual configuration</span>
-                                    </li>
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>No setup, or hidden fees</span>
-                                    </li>
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Team size : <span className="font-semibold">4 developers</span></span>
-                                    </li>
-
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Free updates : <span className="font-semibold">12 months</span></span>
-                                    </li>
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Languages : <span className="font-semibold">React Js, Next js,redu</span></span>
-                                    </li>
-                                </ul>
-                                <Link to="/userform" className="px-5 py-2.5 relative rounded group  text-white font-medium inline-block">
-                                    <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-sky-400 to-blue-500"></span>
-                                    <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
-                                    <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
-                                    <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-sky-600 from-blue-500"></span>
-                                    <span className="relative flex gap-2 justify-center">Register Now<FaArrowCircleDown className="mt-1.5" /></span>
-                                </Link>
-                            </div>
-
-                            <div data-aos="fade-right" className="flex flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-800  rounded-lg border border-sky-400 shadow  xl:py-8 xl:px-5 dark:text-white">
-                                <h3 className="mb-4 text-xl  sm:text-2xl font-semibold text-sky-400">Dynamic Website & Back End</h3>
-                                <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">Best for large scale uses and extended redistribution rights.</p>
-                                <div className="flex justify-center items-baseline my-8">
-                                    <span className="mr-2 text-5xl font-extrabold">₹19999</span>
-                                    {/* <span className="text-gray-500 dark:text-gray-400">/month</span> */}
-                                </div>
-
-                                <ul className="mb-8 space-y-4 text-left">
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Individual configuration</span>
-                                    </li>
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>No setup, or hidden fees</span>
-                                    </li>
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Team size : <span className="font-semibold">6+ developers</span></span>
-                                    </li>
-
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold flex-shrink-0" />
-                                        <span>Free updates : <span className="font-semibold">18 months</span></span>
-                                    </li>
-                                    <li className="flex items-center space-x-3">
-                                        <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
-                                        <span>Language : <span className="font-semibold">MERN STACK</span></span>
-                                    </li>
-                                </ul>
-                                <Link to="/userform" className="px-5 py-2.5 relative rounded group  text-white font-medium inline-block">
-                                    <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-sky-400 to-blue-500"></span>
-                                    <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
-                                    <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-sky-400 to-blue-500"></span>
-                                    <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-sky-600 from-blue-500"></span>
-                                    <span className="relative flex gap-2 justify-center">Register Now<FaArrowCircleDown className="mt-1.5" /></span>
-                                </Link>
-                            </div>
+                            ))}
                         </div>
                     </div>
                     {/* SWIPER JS  */}
@@ -272,23 +245,10 @@ function Home() {
                             modules={[FreeMode, Pagination, Autoplay, Pagination, Navigation]}
                             className="mySwiper "
                         >
-                            <SwiperSlide><img src={htmls} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={css} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={JavaScript} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={mongodb} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={expressjss} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={reacts} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={nodejss} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={docker} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={gits} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={github} alt="icons" className="lg:w-3/5 h-3/5 dark:invert drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={jsons} alt="icons" className="lg:w-3/5 h-3/5 dark:invert drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={bootstrab} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={reduxs} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={tailwindcss} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={metrialui} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={msoffice} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
-                            <SwiperSlide><img src={photoshop} alt="icons" className="lg:w-3/5 h-3/5 drop-shadow-2xl " /></SwiperSlide>
+                            {images.map((item, index) => (
+                                <SwiperSlide><img src={item.img} alt="icons" className={`lg:w-3/5 h-3/5 drop-shadow-2xl ${item.cls} `} /></SwiperSlide>
+
+                            ))}
                         </Swiper>
                     </div>
                 </section>
