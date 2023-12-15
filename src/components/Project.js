@@ -5,6 +5,7 @@ import quiz from '../myimgs/React-Quiz-App.jpg';
 import wheathor from '../myimgs/whather.jpg';
 import './error.css';
 
+
 function Project() {
  
 
@@ -64,7 +65,7 @@ function Project() {
     { title: "Project - 2", 
     heading: "WHEATHER APP", 
     imgs: wheathor, 
-    link:"*",
+    link:"/pnf",
     disc: "The React Weather app is a short and neat application built using the React framework.The app retrieves weather data from an API and displays it on the user interface. It allows users to search for the weather of a specific location by entering the city name or ZIP code. The app dynamically updates the weather information in real-time, providing accurate and up-to-date forecasts. Overall, the React Weather app is a concise and efficient tool for accessing weather information.",
     Anime:"flip-left",
     duration:2000 ,
@@ -74,7 +75,7 @@ function Project() {
     { title: "Project - 3", 
     heading: "QUIZ APP", 
     imgs: quiz, 
-    link:"*",
+    link:"/pnf",
     disc: "A quiz app built using React JS is a web-based application that allows users to take various quizzes on different topics. The app provides a user-friendly interface with interactive features such as multiple choice questions, timed quizzes, and instant feedback. React JS is a popular JavaScript library used for building user interfaces, making it an ideal choice for creating dynamic and responsive quiz apps.Overall, a React JS quiz app offers an  providing developers with a flexible framework.",
     Anime:"flip-left",
     duration:3000 ,
@@ -83,7 +84,7 @@ function Project() {
   ]
   return (
     <>
-      <section className="text-gray-600 body-font dark:bg-gray-900 bg-gray-700">
+      <section className="text-gray-600 body-font dark:bg-gray-900 bg-gray-700 pt-6">
         <h1 className="text-2xl sm:text-4xl text-sky-400 text-center py-11 pr-6 font-extrabold underline underline-offset-2  decoration-slate-300">My Projects</h1>
         <div className="container px-5 py-19 mx-auto pb-7 ">
           <div className="flex flex-wrap -m-4">
@@ -96,7 +97,7 @@ function Project() {
                     <h1 className="title-font text-lg font-medium text-gray-600 mb-3">{project.heading}</h1>
                     <p className="leading-relaxed mb-3">{project.disc}</p>
                     <div className='flex justify-between'>
-                      <Link to={project.link} target='_blank' className="inline-block px-12 py-3 text-sm font-medium text-white bg-violet-600 border border-violet-600 rounded active:text-violet-500 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring">
+                      <Link to={project.link} target='_blank' className="inline-block px-8 md:px-12 py-3 text-sm font-medium text-white bg-violet-600 border border-violet-600 rounded active:text-violet-500 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring">
                         Live Site
                       </Link>
                       <div className="flex gap-2">

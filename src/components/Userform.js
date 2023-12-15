@@ -1,12 +1,13 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useRef} from "react";
 import user from '../myimgs/register.webp'
 import MySwal from 'sweetalert2'
 import Axios from "axios";
 import { useFormik } from "formik";
 import { basicSchema } from "./schemas";
 import './error.css'
-import { HelmetProvider, Helmet } from "react-helmet-async"
-
+import { HelmetProvider, Helmet } from "react-helmet-async";
+import lottie from "lottie-web";
+import audio from "../videos/whooo-2.mp3";
 const onSubmit = async (values, action) => {
   console.log(values);
   Axios.post("http://localhost:8001/form", values, action)
@@ -42,6 +43,21 @@ function Userform() {
     // 👇️ scroll to top on page load
     window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
   }, []);
+  
+  const container = useRef(null);
+
+    useEffect(() => {
+        lottie.loadAnimation({
+            container: container.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: require('../videos/panda.json'),
+        })
+    }, [])
+ const playAudio=()=>{
+  new Audio(audio).play();
+ }
   return (
 
     <>
@@ -56,11 +72,10 @@ function Userform() {
           <div
             className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
             <div
-              className=" shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
-              <img alt="Sampleimage"
-                src={user}
-                className="w-full"
-              />
+              className=" shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12 overflow-hidden">
+              <div ref={container} onClick={playAudio}
+                className="w-full h-screen overflow-hidden"
+              ></div>
 
             </div>
             {/* <!-- Right column container --> */}
@@ -78,7 +93,7 @@ function Userform() {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.username}
-                      placeholder="entername" autoComplete="off"
+                      placeholder="Enter Name" autoComplete="off"
                     />
                     {errors.username && touched.username && <span className="text-red-500 py-1 pb-1">{errors.username}</span>}
                   </div>

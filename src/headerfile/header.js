@@ -96,7 +96,7 @@ function Header() {
         <nav className="bg-gray-700  dark:bg-gray-900 md:h-13 ">
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between  mx-auto p-3">
 
-            <a href="/" className="flex items-center">
+            <a href="/pnf" className="flex items-center">
               {/* <img src={img1} className="h-9 w-9 mr-3 rounded-full dark:ring-1 ring-offset-2  dark:ring-sky-400 ring-1 ring-sky-400" alt="Flowbite Logo" /> */}
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sivabalan M</span>
             </a>

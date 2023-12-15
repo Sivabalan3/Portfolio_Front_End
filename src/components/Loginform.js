@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { adminSchema } from "./schemas";
 import MySwal from 'sweetalert2'
-import './error.css'
+import './error.css';
+import WrningAudio from "../videos/warning-1.mp3";
+import SuccessAudio from "../videos/success-1.mp3"
 
 
 function Loginform() {
@@ -26,6 +28,7 @@ function Loginform() {
                 timer: 1500,
             });
             action.resetForm()
+            new Audio(SuccessAudio).play();
         }
         else {
             MySwal.fire({
@@ -34,6 +37,7 @@ function Loginform() {
                 text: 'Incorrect email or password.',
 
             });
+            new Audio(WrningAudio).play();
         }
     }
 

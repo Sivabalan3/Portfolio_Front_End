@@ -12,7 +12,7 @@ import { FreeMode, Pagination, Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-import 'swiper'
+import 'swiper';
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import Project from "./Project";
 import htmls from "../myimgs/swip/html.png";
@@ -32,6 +32,7 @@ import tailwindcss from '../myimgs/swip/tailwindcss.png';
 import metrialui from '../myimgs/swip/metrailui.png';
 import msoffice from '../myimgs/swip/msoffice.png';
 import photoshop from '../myimgs/swip/photoshop.png';
+import Gome from "../myimgs/Home.png";
 function Home() {
     const history = useNavigate();
     useEffect(() => {
@@ -128,7 +129,7 @@ function Home() {
 
                 </HelmetProvider>
 
-                <div className="relative h-full w-full flex item-center justify-center">
+                <div className="relative h-full w-full flex item-center justify-center over">
 
                     <div className="absolute flex flex-col justify-around md:justify-center  w-full h-full lg:pb-2">
                         <div className="text-center w-full md:h-2/5 sm:space-y-2 space-y-1">
@@ -171,8 +172,9 @@ function Home() {
                     </div>
                     
                     <video src={video} alt="background video" type="video/mp4" className="brightness-60 w-full h-full -z-10 bg-fixed top-0 overflow-hidden" autoPlay loop muted />
+                    
                 </div>
-                {/* PRICING TAG */}<section className="bg-gray-700 dark:bg-gray-900">
+                {/* PRICING TAG */}<section className="bg-gray-700 dark:bg-gray-900 overflow-hidden">
                     <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                         <div data-aos="fade-up" data-aos-duration="700" className="mx-auto  text-center mb-8 lg:mb-12">
                             <h2 className="mb-4 text-2xl lg:text-4xl tracking-tight font-extrabold   text-sky-400">Designed for business teams like yours</h2>
@@ -229,7 +231,7 @@ function Home() {
                         </div>
                     </div>
                     {/* SWIPER JS  */}
-                    <div>
+                    <div className="">
 
                         <h1 className="text-2xl sm:text-4xl text-sky-400 text-center py-6 pr-6 font-extrabold underline underline-offset-2  decoration-slate-300">My Skils</h1>
                         <Swiper
@@ -246,7 +248,7 @@ function Home() {
                             className="mySwiper "
                         >
                             {images.map((item, index) => (
-                                <SwiperSlide><img src={item.img} alt="icons" className={`lg:w-3/5 h-3/5 drop-shadow-2xl ${item.cls} `} /></SwiperSlide>
+                                <SwiperSlide><img src={item.img} alt="icons" className={`lg:w-3/5 h-3/5 drop-shadow-2xl shadow-[rgba(0 ,0 ,0,0.4) 0px 30px 90px] ${item.cls} `} /></SwiperSlide>
 
                             ))}
                         </Swiper>
