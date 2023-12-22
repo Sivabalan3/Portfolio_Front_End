@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect,useState ,useRef} from "react";
 import { CheckIcon, UserIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 import loginimage from '../myimgs/back-loginwebp.webp';
 import { HelmetProvider, Helmet } from "react-helmet-async"
@@ -9,7 +9,7 @@ import MySwal from 'sweetalert2'
 import './error.css';
 import WrningAudio from "../videos/warning-1.mp3";
 import SuccessAudio from "../videos/success-1.mp3"
-
+import lottie from "lottie-web";
 
 function Loginform() {
     const history = useNavigate();
@@ -58,6 +58,17 @@ function Loginform() {
         // 👇️ scroll to top on page load
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
       }, []);
+      const container = useRef(null);
+
+    useEffect(() => {
+        lottie.loadAnimation({
+            container: container.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: require('../videos/network.json'),
+        }) 
+    }, [])
 
     return (
         <>
@@ -66,8 +77,8 @@ function Loginform() {
                     <title>Admin</title>
                 </Helmet>
             </HelmetProvider>
-            <section className="bg-gray-50 dark:bg-gray-900 w-full h-screen">
-                <img src={loginimage} type="webp" alt="backlogin" className=" w-full h-full absolute object-cover" />
+            <section className="bg-gray-50 dark:bg-gray-900 w-full h-screen overflow-hidden">
+                <div ref={container} type="webp" alt="backlogin" className=" w-full h-screen absolute object-cover overflow-hidden" ></div>
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 
                     <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 relative top-5 md:top-0 md:bottom-14 ">

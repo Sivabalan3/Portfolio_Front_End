@@ -46,23 +46,23 @@ const Dashboard = () => {
   }, [])
   return (
     <>
-      <div className="flex dark:bg-slate-800 bg-gray-700">
+      <div className="flex dark:bg-slate-800 bg-white duration-300">
         <div
           className={` ${open ? "w-72" : "w-20 "
-            }  bg-slate-900 shadow-2xl drop-shadow-2xl h-screen p-5  pt-8 relative  duration-300 border-r border-slate-100 text-white font-semibold`}
+            }  dark:bg-slate-900 bg-white shadow-2xl drop-shadow-2xl h-screen p-5  pt-8 relative   border-r border-slate-100 text-white font-semibold`}
         >
           <h1
             className={`absolute cursor-pointer -right-3 top-9 w-9 h-9 border-dark-purple
            border-2 rounded-full  ${!open && "rotate-180"}`}
             onClick={() => setOpen(!open)}
-          ><FaCircleChevronRight className="w-8 h-8 hover:text-sky-400" /></h1>
+          ><FaCircleChevronRight className="w-8 h-8 hover:text-sky-400 text-sky-400" /></h1>
           <div className="flex gap-x-4 items-center">
             <h1
               className={`cursor-pointer duration-500 ${open && "rotate-[360deg]"
                 }`}
-            ><BiLogIn className="w-8 h-8" /></h1>
+            ><BiLogIn className="w-8 h-8 dark:text-sky-400 text-sky-500"  /></h1>
             <h1
-              className={`text-white origin-left font-medium text-xl duration-100 cursor-pointer hover:text-sky-400 ${!open && "scale-0"
+              className={`dark:text-white text-gray-600 origin-left font-medium text-xl duration-100 cursor-pointer hover:text-sky-400 ${!open && "scale-0"
                 }`} onClick={logouthandler}
             >
               LogOut User
@@ -73,7 +73,7 @@ const Dashboard = () => {
             {Menus.map((Menu, index) => (
               <li
                 key={index}
-                className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white text-gray-300 text-sm items-center gap-x-4 
+                className={`flex  rounded-md p-2 cursor-pointer hover:bg-sky-400 text-gray-600 dark:text-white text-sm items-center gap-x-4 
               ${Menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-light-white"
                   } `}
               >
@@ -98,7 +98,7 @@ const Dashboard = () => {
               </div>
             {/* <input placeholder="Search" onChange={(ev)=>setSearch(ev.target.value)}/> */}
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 px-3">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <thead className="text-md text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
                 <th scope="col" className="px-6 py-3 text-sky-500 ">
                   NAME
@@ -124,7 +124,7 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   KOBI KRISNAN
                 </th>
@@ -166,7 +166,7 @@ const Dashboard = () => {
                 </td>
               </tr>
 
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
                 <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   KANNAN
                 </th>

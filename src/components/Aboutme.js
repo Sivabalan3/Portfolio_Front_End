@@ -59,11 +59,11 @@ function Aboutme() {
         </HelmetProvider>
         
 
-            <section className="bg-gray-800 dark:bg-slate-800">
+            <section className="bg-white dark:bg-slate-800 duration-300">
                 <div className="container mx-auto py-4">
                     <div className="grid grid-cols-4 md:grid-cols-12 gap-6">
-                        <div className="col-span-5 md:col-span-3 px-2">
-                            <div data-aos="fade-up" data-aos-duration="2500" className=" text-slate-200 dark:bg-slate-900 dark:text-slate-300  rounded-lg p-6 h-full border  border-sky-500 shadow-2xl">
+                        <div className="col-span-5 md:col-span-3 px-2 duration-300">
+                            <div data-aos="fade-up" data-aos-duration="2500" className="duration-300 text-slate-800 dark:bg-slate-900 dark:text-slate-300  rounded-lg p-6 h-full border  border-sky-500 shadow-2xl">
                                 <div className="flex flex-col items-center">
 
                                     {/* <img src={proimage} alt="profile" className="  cursor-none w-44 h-44 bg-gray-300 rounded-full mb-4 shrink-0"/> */}
@@ -78,9 +78,9 @@ function Aboutme() {
                                             rel="noreferrer"
                                             className="relative inline-flex items-center justify-center p-4 px-4 py-1.5 overflow-hidden font-medium text-sky-300 transition duration-300 ease-out border-2 border-sky-400 rounded-full shadow-md group">
                                             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-y-full bg-sky-400 group-hover:translate-y-0 ease">
-                                                <BiChevronsDown className="w-7 h-7 text-white" />
+                                                <BiChevronsDown className="w-7 h-7 text-slate-300" />
                                             </span>
-                                            <span className="absolute flex items-center justify-center w-full h-full text-sky-100 transition-all duration-300 transform group-hover:translate-x-full ease" >Resume</span>
+                                            <span className="absolute flex items-center justify-center w-full h-full text-sky-400 transition-all duration-300 transform group-hover:translate-x-full ease" >Resume</span>
                                             <span className="relative invisible">Resume</span>
                                         </a>
 
@@ -93,7 +93,7 @@ function Aboutme() {
                                             <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-y-full bg-sky-400 group-hover:translate-y-0 ease">
                                                 <BiChevronsDown className="w-7 h-7 text-white" />
                                             </span>
-                                            <span className="absolute flex items-center justify-center w-full h-full text-sky-100 transition-all duration-300 transform group-hover:translate-x-full ease">Contact</span>
+                                            <span className="absolute flex items-center justify-center w-full h-full text-sky-400 transition-all duration-300 transform group-hover:translate-x-full ease">Contact</span>
                                             <span className="relative invisible">Contact</span>
                                         </a>
                                     </div>
@@ -110,22 +110,22 @@ function Aboutme() {
                                             <li className="inline-flex text-lg font-semibold"><BiLogoTailwindCss className="text-sky-500 font-bold w-6 h-6 mx-px" />Tailwind Css</li>
                                             {(isShowMore && (
                                                 <ul className="flex flex-col space-y-1 ">
-                                                    <li className="text-white inline-flex text-lg font-semibold"><BiLogoBootstrap className=" text-fuchsia-700 font-bold w-6 h-6 mx-px" />Bootstrab</li>
-                                                    <li className="text-white inline-flex text-lg font-semibold "><BiSolidFileJson className="text-purple-500 font-bold w-6 h-6 mx-px" />json</li>
-                                                    <li className="text-white inline-flex text-lg font-semibold"><SiOracle className="text-red-500 font-bold w-6 h-6 mx-px" />Oracle</li>
-                                                    <li className="text-white inline-flex text-lg font-semibold"><SiMaterialdesign className="text-sky-400 font-bold w-6 h-6 mx-px" />Material Ui</li>
-                                                    <li className="text-white inline-flex text-lg font-semibold"><BiLogoJava className="text-red-500 font-bold w-6 h-6 mx-px" />Java</li>
-                                                    <li className="text-white inline-flex text-lg font-semibold"><BiLogoGithub className="text-black dark:text-white font-bold w-6 h-6 mx-px" />GitHUb</li>
-                                                    <li className="text-white inline-flex text-lg font-semibold"><BiLogoGit className="text-rose-600 font-bold w-6 h-6 mx-px" />Git</li>
-                                                    <li className="text-white inline-flex text-lg font-semibold"><BiLogoMicrosoft className="text-sky-500  font-bold w-6 h-6 mx-px" />Microsotf Office</li>
-                                                    <li className="text-white inline-flex text-lg font-semibold"><SiAdobephotoshop className="text-violet-500 font-bold w-6 h-6 mx-px" />Photoshop</li>
+                                                    <li className="dark:text-slate-300 text-slate-800 inline-flex text-lg font-semibold"><BiLogoBootstrap className=" text-fuchsia-700 font-bold w-6 h-6 mx-px" />Bootstrab</li>
+                                                    <li className="dark:text-slate-300 text-slate-800 inline-flex text-lg font-semibold "><BiSolidFileJson className="text-purple-500 font-bold w-6 h-6 mx-px" />json</li>
+                                                    <li className="dark:text-slate-300 text-slate-800 inline-flex text-lg font-semibold"><SiOracle className="text-red-500 font-bold w-6 h-6 mx-px" />Oracle</li>
+                                                    <li className="dark:text-slate-300 text-slate-800 inline-flex text-lg font-semibold"><SiMaterialdesign className="text-sky-400 font-bold w-6 h-6 mx-px" />Material Ui</li>
+                                                    <li className="dark:text-slate-300 text-slate-800 inline-flex text-lg font-semibold"><BiLogoJava className="text-red-500 font-bold w-6 h-6 mx-px" />Java</li>
+                                                    <li className="dark:text-slate-300 text-slate-800 inline-flex text-lg font-semibold"><BiLogoGithub className="text-black dark:text-white font-bold w-6 h-6 mx-px" />GitHUb</li>
+                                                    <li className="dark:text-slate-300 text-slate-800 inline-flex text-lg font-semibold"><BiLogoGit className="text-rose-600 font-bold w-6 h-6 mx-px" />Git</li>
+                                                    <li className="dark:text-slate-300 text-slate-800 inline-flex text-lg font-semibold"><BiLogoMicrosoft className="text-sky-500  font-bold w-6 h-6 mx-px" />Microsotf Office</li>
+                                                    <li className="dark:text-slate-300 text-slate-800 inline-flex text-lg font-semibold"><SiAdobephotoshop className="text-violet-500 font-bold w-6 h-6 mx-px" />Photoshop</li>
                                                 </ul>
                                             ))}
                                             <button onClick={toggleReadMoreLess} className="relative inline-flex items-center justify-center p-3 px-3 py-1.5 overflow-hidden font-medium text-sky-400 transition duration-300 ease-out border-2 border-sky-400 rounded-full shadow-md group">
                                                 <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-y-full bg-sky-400 group-hover:translate-y-0 ease">
                                                     <BiChevronsDown className="w-7 h-7 text-white" />
                                                 </span>
-                                                <span className="absolute flex items-center justify-center w-full h-full text-sky-100 transition-all duration-300 transform group-hover:translate-x-full ease">{isShowMore ? 'Read Less' : 'Read More'}</span>
+                                                <span className="absolute flex items-center justify-center w-full h-full text-sky-400 transition-all duration-300 transform group-hover:translate-x-full ease">{isShowMore ? 'Read Less' : 'Read More'}</span>
                                                 <span className="relative invisible">{isShowMore ? 'Read Less' : 'Read More'}</span>
                                             </button>
 
@@ -141,29 +141,29 @@ function Aboutme() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-span-5 md:col-span-9  px-2">
-                            <div data-aos="fade-right" data-aos-duration="2000" className=" text-slate-200 rounded-lg p-6 dark:bg-slate-900 dark:text-slate-300 border border-sky-500 shadow-2xl">
-                                <h2 className="text-xl font-bold mb-4 text-sky-400 underline underline-offset-4 tracking-wider">About Me</h2>
+                        <div className="col-span-5 md:col-span-9  px-2 ">
+                            <div data-aos="fade-right" data-aos-duration="2000" className=" text-slate-800 rounded-lg p-6 duration-300 dark:bg-slate-900 dark:text-slate-300 border border-sky-500 shadow-2xl">
+                                <h2 className="text-xl  font-bold mb-4 text-sky-400 underline underline-offset-4 tracking-wider">About Me</h2>
                                 <p className="text-lg" data-aos="flip-left" data-aos-duration="1000" >Iam a React JS developer, I am passionate about creating unique and intuitive user experiences through responsive web design and efficient code. With several years of experience in this field, I have honed my skills in building scalable, maintainable, and robust web applications using React, Redux, and other related technologies. Additionally, I am an photoshop designer and who can work well both independently and collaboratively in a fast-paced environment while prioritizing deadline-driven tasks. In my free time, I enjoy staying current with the latest React updates and exploring new programming concepts to enhance my knowledge and expertise.
                                 </p>
 
-                                <h3 className="font-semibold text-center mt-3 -mb-2">
+                                <h3 className="font-semibold text-center mt-3 -mb-2 text-sky-400 underline underline-offset-4 tracking-wider ">
                                     Find me on
                                 </h3>
                                 <div className="flex justify-center items-center gap-6 my-6">
-                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds LinkedIn" href="*"
+                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds LinkedIn" href="/pnf"
                                         ><SiLinkedin/>
                                     </a>
-                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds YouTube" href="*"
+                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds YouTube" href="/pnf"
                                         ><SiGithub/>
                                     </a>
-                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds Facebook" href="*"
+                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds Facebook" href="/pnf"
                                         ><SiGmail/>
-                                    </a>
-                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds Instagram" href="*"
+                                  </a>
+                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds Instagram" href="/pnf"
                                         ><SiInstagram/>
                                     </a>
-                                    <a className="hover:scale-[2.2] text-gray-300 hover:text-sky-400 text-lg" aria-label="Visit TrendyMinds Twitter" href="*"
+                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds Twitter" href="/pnf"
                                         ><SiWhatsapp/>
                                     </a>
                                 </div>
@@ -172,7 +172,7 @@ function Aboutme() {
                             
                                 <h2 className=" text-xl font-bold mt-3 mb-4 text-sky-400 underline underline-offset-4 tracking-wider">Information</h2>
                                 <div className="mb-4">
-                                    <div data-aos="fade-left" data-aos-duration="1000" className="flex flex-col  text-lg dark:text-slate-200 text-white">
+                                    <div data-aos="fade-left" data-aos-duration="1000" className="flex flex-col  text-lg dark:text-slate-200 text-slate-800">
                                         <h2><span className="font-semibold">Name : </span> Sivabalan M</h2>
                                         <h2><span className="font-semibold">Age :</span> 20</h2>
                                         <h2><span className="font-semibold">sex :</span> Male</h2>
@@ -185,10 +185,10 @@ function Aboutme() {
                                 
                                 <div className="">
                                     <div className="space-y-1  text-lg mb-4 flex-col  flex-shrink">
-                                        <span className=" font-bold text-xl text-sky-500 underline underline-offset-4 tracking-wider">Education</span>
+                                        <span className=" font-bold text-xl text-sky-400 underline underline-offset-4 tracking-wider">Education</span>
                                         
                                     </div>
-                                    <div data-aos="fade-right" data-aos-duration="1000" className="text-white dark:text-slate-200 text-lg">
+                                    <div data-aos="fade-right" data-aos-duration="1000" className="text-slate-800 dark:text-slate-200 text-lg">
 
                                         <h1><span className="font-semibold">College :</span> Bharath*****Engineering College</h1>
                                         <h2><span className="font-semibold">Cource :</span> Computer Science & Engineering</h2>

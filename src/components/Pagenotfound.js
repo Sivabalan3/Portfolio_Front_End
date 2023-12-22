@@ -11,8 +11,8 @@ function PageNotfound() {
             loop: true,
             autoplay: true,
             animationData: require('../videos/error.json'),
-        })
-    }, [])
+        }) 
+    }, []);
 
 
     return (
@@ -23,6 +23,7 @@ function PageNotfound() {
                 <div  className="container w-full h-screen overflow-hidden" ref={container} >
 
                 </div>
+                <button>BACK</button>
              
             </section>
 

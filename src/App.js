@@ -51,7 +51,7 @@ function App() {
           <HEADER />
 
               <Suspense fallback={
-                  <div className="flex justify-center items-center w-full h-screen dark:bg-slate-900"> 
+                  <div className="flex justify-center items-center w-full h-screen  bg-slate-900"> 
                     <img src={loadimg} alt='loder' className=' transform translate-x-60 w-60 h-60 brightness-110' data-aos="fade-left"></img>
                   </div> } fallbackMinDurationMs={3000}>
                   {/* <div className="flex justify-center items-center w-full h-screen dark:bg-slate-900 overflow-hidden"> 

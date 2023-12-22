@@ -81,7 +81,7 @@ function Home() {
         { img: reduxs }, { img: gits }, { img: bootstrab }, { img: tailwindcss }, { img: metrialui }, { img: photoshop }, { img: msoffice }
     ]
     const card = [
-        {cls:" xl:p-8 flex flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-800  rounded-lg border border-sky-400 shadow  dark:bg-gray-800 dark:text-white", 
+        {cls:" xl:p-8 flex duration-300 flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-200  rounded-lg border border-sky-400 shadow  dark:bg-gray-800 dark:text-white", 
         title: "Static website & front end", 
         subtitle: "Best option for personal use & for your next project.", 
         price: "₹2999", 
@@ -93,7 +93,7 @@ function Home() {
          duration:1000 ,
         },
 
-        {cls:"xl:py-8 xl:px-5 flex flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-800  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white", 
+        {cls:"xl:py-8 xl:px-5 flex duration-300 flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-200  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white", 
         title: "Dynamic Website & front-end",
          subtitle: "Relevant for multiple users, extended & premium support.", 
         price: "₹6999", 
@@ -105,7 +105,7 @@ function Home() {
         Anime:"fade-up",
         duration:1500 ,},
 
-        {cls:"xl:py-8 xl:px-5 flex flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-800  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white", 
+        {cls:"xl:py-8 xl:px-5 flex duration-300 flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-200  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white", 
         title: "Dynamic Website & Back End",
          subtitle: "Best option for personal use & for your next project.", 
         price: "₹19999", 
@@ -129,7 +129,7 @@ function Home() {
 
                 </HelmetProvider>
 
-                <div className="relative h-full w-full flex item-center justify-center over">
+                <div className="relative h-full w-full flex item-center justify-center overflow-hidden">
 
                     <div className="absolute flex flex-col justify-around md:justify-center  w-full h-full lg:pb-2">
                         <div className="text-center w-full md:h-2/5 sm:space-y-2 space-y-1">
@@ -174,26 +174,26 @@ function Home() {
                     <video src={video} alt="background video" type="video/mp4" className="brightness-60 w-full h-full -z-10 bg-fixed top-0 overflow-hidden" autoPlay loop muted />
                     
                 </div>
-                {/* PRICING TAG */}<section className="bg-gray-700 dark:bg-gray-900 overflow-hidden">
+                {/* PRICING TAG */}<section className="bg-white dark:bg-gray-900 overflow-hidden duration-300">
                     <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
                         <div data-aos="fade-up" data-aos-duration="700" className="mx-auto  text-center mb-8 lg:mb-12">
-                            <h2 className="mb-4 text-2xl lg:text-4xl tracking-tight font-extrabold   text-sky-400">Designed for business teams like yours</h2>
-                            <p className="mb-5 font-light text-gray-300 sm:text-xl dark:text-gray-400">Looking for a skilled website developer? Look no further! Our team of expert developers can create a professional website that meets your needs and exceeds your expectations. Whether you need a simple brochure site or a complex e-commerce platform, we've got the experience and technical know-how to make it happen. We use the latest technologies and best practices to ensure your site is secure, responsive, and visually stunning. Contact us today to discuss your project and get a free quote!</p>
+                            <h2 className="mb-4 text-2xl lg:text-4xl tracking-tight font-extrabold   text-sky-400">Designed For Business Teams Like Yours</h2>
+                            <p className="mb-5 font-light text-gray-900 sm:text-xl dark:text-gray-400">Looking for a skilled website developer? Look no further! Our team of expert developers can create a professional website that meets your needs and exceeds your expectations. Whether you need a simple brochure site or a complex e-commerce platform, we've got the experience and technical know-how to make it happen. We use the latest technologies and best practices to ensure your site is secure, responsive, and visually stunning. Contact us today to discuss your project and get a free quote!</p>
                         </div>
             
                         <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 ">
                             {card.map((cards) => (
 
 
-                                <div data-aos={cards.Anime} data-aos-duration={cards.duration} className={cards.cls}>
+                                <div data-aos={cards.Anime} data-aos-duration={cards.duration} className={cards.cls} >
                                     <h3 className="mb-4 text-xl  sm:text-2xl font-semibold text-sky-400"> {cards.title}</h3>
-                                    <p className="font-light text-gray-500 sm:text-lg dark:text-gray-400">{cards.subtitle}</p>
+                                    <p className="font-light text-gray-900 sm:text-lg dark:text-gray-400">{cards.subtitle}</p>
                                     <div className="flex justify-center items-baseline my-8">
-                                        <span className="mr-2 text-5xl font-extrabold">{cards.price}</span>
+                                        <span className="mr-2 text-5xl font-extrabold dark:text-slate-200 text-gray-700">{cards.price}</span>
                                         {/* <span className="text-gray-500 dark:text-gray-400">/month</span> */}
                                     </div>
 
-                                    <ul className="mb-8 space-y-4 text-left">
+                                    <ul className="mb-8 space-y-4 text-left text-gray-700 dark:text-gray-200">
                                         <li className="flex items-center space-x-3">
                                             <CheckCircleIcon className="text-green-400 w-6 h-6 font-bold" />
                                             <span>Individual configuration</span>
@@ -233,7 +233,7 @@ function Home() {
                     {/* SWIPER JS  */}
                     <div className="">
 
-                        <h1 className="text-2xl sm:text-4xl text-sky-400 text-center py-6 pr-6 font-extrabold underline underline-offset-2  decoration-slate-300">My Skils</h1>
+                        <h1 className="text-2xl sm:text-4xl text-sky-400 text-center py-6 pr-6 font-extrabold underline underline-offset-2  decoration-slate-300  tracking-widest">My Skils</h1>
                         <Swiper
                             slidesPerView={3}
                             spaceBetween={30}

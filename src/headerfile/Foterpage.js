@@ -1,11 +1,24 @@
-import React from "react";
+import React,{useRef,useEffect} from "react";
 // import jeeva from '../myimgs/jeeva logo.webp'
+import lottie from "lottie-web";
 import {
     FaWhatsapp,
     FaFacebook,
     FaTwitter,FaGithub,FaInstagram
   } from "react-icons/fa";
+ 
 function Foterpage (){
+    const container = useRef(null);
+    useEffect(() => {
+        lottie.loadAnimation({
+            container: container.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: require('../videos/line-4.json'),
+        }) 
+        
+    }, [])
     return(
         <>
 <footer className="bg-gray-700 dark:bg-gray-900 border-t border-slate-400 text-white">
@@ -53,34 +66,36 @@ function Foterpage (){
               </div>
           </div>
       </div>
-      <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/>
-      <div className="sm:flex sm:items-center sm:justify-between">
+      {/* <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"/> */}
+      <div className="sm:flex sm:items-center sm:justify-between mt-4">
           <span className="text-sm  sm:text-center dtext-gray-400">© 2023 <a href="/" className="hover:underline">sivabalan™</a>. All Rights Reserved.
           </span>
           <div className="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
-              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 text-white">
+              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-300 dark:hover:text-violet-500 text-white">
               <FaFacebook className='text-2xl'/>
                   <span className="sr-only">Facebook page</span>
               </a>
-              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 text-white">
+              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-300 dark:hover:text-violet-500 text-white">
                  <FaWhatsapp className="text-2xl"/>
                   <span className="sr-only">Discord community</span>
               </a>
-              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 text-white">
+              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-300 dark:hover:text-violet-500 text-white">
                  <FaTwitter className="text-2xl"/>
                   <span className="sr-only">Twitter page</span>
               </a>
-              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 text-white">
+              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-300 dark:hover:text-violet-500 text-white">
                   <FaGithub className="text-2xl"/>
                   <span className="sr-only">GitHub account</span>
               </a>
-              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-900 dark:hover:text-violet-500 dark:text-white">
+              <a href="/pnf" className="hover:scale-[2.2] hover:text-gray-300 dark:hover:text-violet-500 dark:text-white">
                  <FaInstagram className="text-2xl"/>
                   <span className="sr-only">Instagram</span>
               </a>
           </div>
       </div>
     </div>
+    <div className="h-1  overflow-hidden w-full object-fill  sm:hidden" ref={container}></div>
+
 </footer>
 
         </>

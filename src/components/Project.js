@@ -84,8 +84,8 @@ function Project() {
   ]
   return (
     <>
-      <section className="text-gray-600 body-font dark:bg-gray-900 bg-gray-700 pt-6">
-        <h1 className="text-2xl sm:text-4xl text-sky-400 text-center py-11 pr-6 font-extrabold underline underline-offset-2  decoration-slate-300">My Projects</h1>
+      <section className="text-gray-600 body-font dark:bg-gray-900 bg-white pt-6 duration-300">
+        <h1 className="text-2xl sm:text-4xl text-sky-400 text-center py-11 pr-6 font-extrabold underline underline-offset-2  decoration-slate-300  tracking-widest">My Projects</h1>
         <div className="container px-5 py-19 mx-auto pb-7 ">
           <div className="flex flex-wrap -m-4">
             {projects.map((project, index) => (
