@@ -13,7 +13,10 @@ function PageNotfound() {
             animationData: require('../videos/error.json'),
         }) 
     }, []);
-
+    useEffect(() => {
+        // 👇️ scroll to top on page load
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+      }, []);
 
     return (
 

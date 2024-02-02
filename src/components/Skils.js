@@ -1,5 +1,5 @@
 import  React,{useEffect,useRef} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import mongodb from '../myimgs/icons/mongodb.png';
 import expressjs from '../myimgs/icons/expressjs.webp';
 import reactjs from '../myimgs/icons/reactjs.png';
@@ -52,9 +52,9 @@ function Skils(){
         <p className=" dark:text-slate-100 md:text-base text-gray-800 mb-4 ">
          My Website is a full stack Website,but because I don't have global server.I can't store data but localhost server only can store data in small distance.Therefore, So sorry guys &#128591;
         </p>
-        <a href="/pnf"
+        <Link to="/pnf"
         className="bg-transparent mr-auto hover:bg-sky-500 text-sky-400 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-sky-400 hover:border-transparent">
-        Explore Now</a>
+        Explore Now</Link>
       </div>
       <div className="ml-0 md:ml-12 lg:w-2/3 sticky">
         <div className="container mx-auto w-full h-full">
