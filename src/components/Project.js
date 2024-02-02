@@ -1,5 +1,5 @@
-import React, {useState } from 'react'
-import { Link } from "react-router-dom"
+import React, {useState } from 'react';
+import { Link } from "react-router-dom";
 import crud from '../myimgs/crud.png';
 import quiz from '../myimgs/React-Quiz-App.jpg';
 import wheathor from '../myimgs/whather.jpg';
@@ -57,7 +57,7 @@ function Project() {
     imgs: crud, 
     link: 'https://sivabalan3.github.io/react-crud/', 
     disc: "A React CRUD app refers to a web application built using the React JavaScript library that allows users to Create, Read, Update, and Delete data. It provides a user-friendly interface for managing data operations. The term short and neat implies that the app is concise, well-structured, and visually appealing. It likely follows best practices in code organization and design, providing a seamless user experience while efficiently managing data operations. ",
-    Anime:"flip-left",
+    Anime:"fade-up",
     duration:1000 ,
     Likeclick:handleLikeClick,
     DisLike:handleDisikeClick},
@@ -67,7 +67,7 @@ function Project() {
     imgs: wheathor, 
     link:"/pnf",
     disc: "The React Weather app is a short and neat application built using the React framework.The app retrieves weather data from an API and displays it on the user interface. It allows users to search for the weather of a specific location by entering the city name or ZIP code. The app dynamically updates the weather information in real-time, providing accurate and up-to-date forecasts. Overall, the React Weather app is a concise and efficient tool for accessing weather information.",
-    Anime:"flip-left",
+    Anime:"fade-down",
     duration:2000 ,
     Likeclick:handleLikeClick,
     DisLike:handleDisikeClick},
@@ -77,14 +77,14 @@ function Project() {
     imgs: quiz, 
     link:"/pnf",
     disc: "A quiz app built using React JS is a web-based application that allows users to take various quizzes on different topics. The app provides a user-friendly interface with interactive features such as multiple choice questions, timed quizzes, and instant feedback. React JS is a popular JavaScript library used for building user interfaces, making it an ideal choice for creating dynamic and responsive quiz apps.Overall, a React JS quiz app offers an  providing developers with a flexible framework.",
-    Anime:"flip-left",
+    Anime:"fade-up",
     duration:3000 ,
     Likeclick:handleLikeClick,
     DisLike:handleDisikeClick}
   ]
   return (
     <>
-      <section className="text-gray-600 body-font dark:bg-gray-900 bg-white pt-6 duration-300">
+      <section className="text-gray-600 body-font dark:bg-gray-900 bg-white pt-6 duration-300 md-mt-32">
         <h1 className="text-2xl sm:text-4xl text-sky-400 text-center py-11 pr-6 font-extrabold underline underline-offset-2  decoration-slate-300  tracking-widest">My Projects</h1>
         <div className="container px-5 py-19 mx-auto pb-7 ">
           <div className="flex flex-wrap -m-4">

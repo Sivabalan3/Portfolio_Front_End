@@ -32,7 +32,7 @@ import tailwindcss from '../myimgs/swip/tailwindcss.png';
 import metrialui from '../myimgs/swip/metrailui.png';
 import msoffice from '../myimgs/swip/msoffice.png';
 import photoshop from '../myimgs/swip/photoshop.png';
-import Gome from "../myimgs/Home.png";
+
 function Home() {
     const history = useNavigate();
     useEffect(() => {
@@ -248,7 +248,7 @@ function Home() {
                             className="mySwiper "
                         >
                             {images.map((item, index) => (
-                                <SwiperSlide><img src={item.img} alt="icons" className={`lg:w-3/5 h-3/5 drop-shadow-2xl shadow-[rgba(0 ,0 ,0,0.4) 0px 30px 90px] ${item.cls} `} /></SwiperSlide>
+                                <SwiperSlide><img src={item.img} alt="icons" className={`lg:w-3/4 lg-h-3/4   ${item.cls} `} /></SwiperSlide>
 
                             ))}
                         </Swiper>

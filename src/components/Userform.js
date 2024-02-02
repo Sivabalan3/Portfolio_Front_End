@@ -66,7 +66,7 @@ function Userform() {
           <title>Userform</title>
         </Helmet>
       </HelmetProvider>
-      <section className="h-full dark:bg-slate-900 bg-slate-700">
+      <section className="h-full bg-white dark:bg-slate-900  duration-300">
         <div className="h-full">
           {/* <!-- Left column container with background--> */}
           <div
@@ -81,7 +81,7 @@ function Userform() {
             {/* <!-- Right column container --> */}
             <div className="mb-12 md:mb-0 w-full md:w-3/5 lg:w-5/12 xl:w-5/12">
               <div
-                className="border border-sky-400 block max-w-md rounded-lg bg-slate-700  p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-slate-700">
+                className="border border-sky-400 block max-w-md rounded-lg bg-slate-500  p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-slate-700">
                 <form onSubmit={handleSubmit}
                   action="http://localhost:8001/form"
                   method="POST"

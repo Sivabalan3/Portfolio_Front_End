@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-// import proimage from '../myimgs/jeeva logo.webp'
+import { Link, useNavigate } from "react-router-dom";
+import proimage from '../myimgs/jeeva logo.webp'
 import {
     BiChevronsDown, BiLogoReact, 
     BiLogoJavascript,BiLogoGithub,  
@@ -66,7 +66,7 @@ function Aboutme() {
                             <div data-aos="fade-up" data-aos-duration="2500" className="duration-300 text-slate-800 dark:bg-slate-900 dark:text-slate-300  rounded-lg p-6 h-full border  border-sky-500 shadow-2xl">
                                 <div className="flex flex-col items-center">
 
-                                    {/* <img src={proimage} alt="profile" className="  cursor-none w-44 h-44 bg-gray-300 rounded-full mb-4 shrink-0"/> */}
+                                    <img src={proimage} alt="profile" className="border-[2px] border-sky-400  cursor-none w-44 h-44 bg-gray-300 rounded-full mb-4 shrink-0"/>
 
                                     
                                     <h1 className="text-xl font-bold">Sivabalan M</h1>
@@ -151,21 +151,21 @@ function Aboutme() {
                                     Find me on
                                 </h3>
                                 <div className="flex justify-center items-center gap-6 my-6">
-                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds LinkedIn" href="/pnf"
+                                    <Link className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds LinkedIn" to="/pnf"
                                         ><SiLinkedin/>
-                                    </a>
-                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds YouTube" href="/pnf"
+                                    </Link>
+                                    <Link className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds YouTube" to="/pnf"
                                         ><SiGithub/>
-                                    </a>
-                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds Facebook" href="/pnf"
+                                    </Link>
+                                    <Link className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds Facebook" to="/pnf"
                                         ><SiGmail/>
-                                  </a>
-                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds Instagram" href="/pnf"
+                                  </Link>
+                                    <Link className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds Instagram" to="/pnf"
                                         ><SiInstagram/>
-                                    </a>
-                                    <a className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds Twitter" href="/pnf"
+                                    </Link>
+                                    <Link className="hover:scale-[2.2] text-slate-800 dark:text-slate-200 dark:hover:text-sky-400 text-xl" aria-label="Visit TrendyMinds Twitter" to="/pnf"
                                         ><SiWhatsapp/>
-                                    </a>
+                                    </Link>
                                 </div>
 
                             <div className="">
@@ -201,6 +201,57 @@ function Aboutme() {
                            </div>
                     </div>
                 </div>
+
+            </section>
+            <section>
+                
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 dark:bg-gray-900 px-4">
+    <div class="grid gap-4">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="grid gap-4">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="grid gap-4">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="grid gap-4">
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt=""/>
+        </div>
+        <div>
+            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""/>
+        </div>
+    </div>
+</div>
 
             </section>
         </>
