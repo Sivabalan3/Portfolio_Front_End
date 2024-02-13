@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import './Home.scss'
 import { Typewriter, Cursor } from 'react-simple-typewriter';
 import video from '../videos/vid6.mp4';
 import { ChevronDoubleDownIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
@@ -81,41 +82,45 @@ function Home() {
         { img: reduxs }, { img: gits }, { img: bootstrab }, { img: tailwindcss }, { img: metrialui }, { img: photoshop }, { img: msoffice }
     ]
     const card = [
-        {cls:" xl:p-8 flex duration-300 flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-200  rounded-lg border border-sky-400 shadow  dark:bg-gray-800 dark:text-white", 
-        title: "Static website & front end", 
-        subtitle: "Best option for personal use & for your next project.", 
-        price: "₹2999", 
-        developer: "1 developer",
-         month: "6 months", 
-         language: "HTML, CSS, JavaScriptT", 
-         btn: "Register Now",
-         Anime:"fade-right",
-         duration:1000 ,
+        {
+            cls: " xl:p-8 flex duration-300 flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-200  rounded-lg border border-sky-400 shadow  dark:bg-gray-800 dark:text-white",
+            title: "Static website & front end",
+            subtitle: "Best option for personal use & for your next project.",
+            price: "₹2999",
+            developer: "1 developer",
+            month: "6 months",
+            language: "HTML, CSS, JavaScriptT",
+            btn: "Register Now",
+            Anime: "fade-right",
+            duration: 1000,
         },
 
-        {cls:"xl:py-8 xl:px-5 flex duration-300 flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-200  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white", 
-        title: "Dynamic Website & front-end",
-         subtitle: "Relevant for multiple users, extended & premium support.", 
-        price: "₹6999", 
-        developer: "4 developer", 
-        month: "12 months", 
-        language: "React Js, Next js,Redux", 
-        btn: "Register Now",
-    
-        Anime:"fade-up",
-        duration:1500 ,},
+        {
+            cls: "xl:py-8 xl:px-5 flex duration-300 flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-200  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white",
+            title: "Dynamic Website & front-end",
+            subtitle: "Relevant for multiple users, extended & premium support.",
+            price: "₹6999",
+            developer: "4 developer",
+            month: "12 months",
+            language: "React Js, Next js,Redux",
+            btn: "Register Now",
 
-        {cls:"xl:py-8 xl:px-5 flex duration-300 flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-200  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white", 
-        title: "Dynamic Website & Back End",
-         subtitle: "Best option for personal use & for your next project.", 
-        price: "₹19999", 
-        developer: "6+ developer", 
-        month: "18 months", 
-        language: "MERN STACK", 
-        btn: "Register Now",
-        Anime:"fade-left",
-        duration:2000 ,
-    }
+            Anime: "fade-up",
+            duration: 1500,
+        },
+
+        {
+            cls: "xl:py-8 xl:px-5 flex duration-300 flex-col p-6 mx-auto max-w-lg text-center text-gray-200 bg-gray-200  rounded-lg border border-sky-400 shadow dark:bg-gray-800 dark:text-white",
+            title: "Dynamic Website & Back End",
+            subtitle: "Best option for personal use & for your next project.",
+            price: "₹19999",
+            developer: "6+ developer",
+            month: "18 months",
+            language: "MERN STACK",
+            btn: "Register Now",
+            Anime: "fade-left",
+            duration: 2000,
+        }
     ]
     return (
         <>
@@ -129,25 +134,26 @@ function Home() {
 
                 </HelmetProvider>
 
-                <div className="relative h-full w-full flex item-center justify-center overflow-hidden">
+                <div className="hero-container">
+                    <video src={video} autoPlay loop muted />
+                    
+                    <div className="video-overlay">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-slate-200 drop-shadow-xl"><span className="text-sky-400">Hi i'm</span> Sivabalan</h2>
+                    
+                        <h1><Typewriter words={['UI/UX Designer ', 'React Js Developer ']} loop={0}
+                            typeSpeed={200}
+                            deleteSpeed={150}
+                            delaySpeed={100}>
 
-                    <div className="absolute flex flex-col justify-around md:justify-center  w-full h-full lg:pb-2">
-                        <div className="text-center w-full md:h-2/5 sm:space-y-2 space-y-1">
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold text-slate-200 drop-shadow-xl"><span className="text-sky-400">Hi i'm</span> Sivabalan</h1>
-                            <h1 className="text-xl sm:text-2xl  md:text-4xl font-semibold  text-white "><Typewriter words={['UI/UX Designer ', 'React Js Developer ']} loop={0}
-                                typeSpeed={200}
-                                deleteSpeed={150}
-                                delaySpeed={100}>
-
-                            </Typewriter><span className="text-red-300 font-bold"><Cursor cursor cursorStyle="|" /></span></h1>
-
-
-
-                            <div className=" h-full flex flex-col sm:justify-center items-center w-full text-center">
-                                <h1 className=" text-slate-200 text-xs text-md md:text-lg  font-semibold  xl:text-xl ">If you need to create a website </h1>
-                                <h1 className=" text-slate-200 text-xs text-md md:text-lg font-semibold pb-3 xl:pb-4 xl:text-xl ">fill the link below</h1>
-
-
+                        </Typewriter></h1>
+                        <p>If you need to create a website</p>
+                        <p >fill the link below</p>
+                        <div className="hero-btns">
+                            <button
+                                className="btns"
+                                buttonStyle="btn--outline"
+                                buttonSize="btn--large"
+                            >
                                 <Link to="/userform" className=" relative inline-flex items-center justify-center md:p-4 md:px-6 md:py-px px-1.5 py-px overflow-hidden font-medium text-slate-200 transition duration-300 ease-out border-2 border-sky-500 rounded-full shadow-md group">
                                     <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white duration-300 -translate-x-full bg-sky-500 group-hover:translate-x-0 ease">
                                         <ChevronDoubleDownIcon className="w-6 h-6" />
@@ -155,11 +161,10 @@ function Home() {
                                     <span className="text-xs md:text-lg absolute flex items-center justify-center w-full h-full texslatet2-200 transition-all duration-300 transform group-hover:translate-x-full ease">Click here</span>
                                     <span className="text-xs md:text-lg p-1 relative invisible">Click here</span>
                                 </Link>
-
-                            </div>
+                            </button>
+                          
                         </div>
-                        {/* DATE AND TIME */}
-                        <div className="">
+                        <div className="time">
                             <h3 className="text-sky-500  text-xs md:text-xl  font-bold pl-2 md:pl-5"> {cutime}</h3>
                             <div className="inline-flex  pl-2 md:pl-5">
                                 <h3 className="px-px text-slate-200 text-xs md:text-xl font-bold">{day} /</h3>
@@ -170,9 +175,6 @@ function Home() {
 
                         </div>
                     </div>
-                    
-                    <video src={video} alt="background video" type="video/mp4" className="brightness-60 w-full h-full -z-10 bg-fixed top-0 overflow-hidden" autoPlay loop muted />
-                    
                 </div>
                 {/* PRICING TAG */}<section className="bg-white dark:bg-gray-900 overflow-hidden duration-300">
                     <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -180,7 +182,7 @@ function Home() {
                             <h2 className="mb-4 text-2xl lg:text-4xl tracking-tight font-extrabold   text-sky-400">Designed For Business Teams Like Yours</h2>
                             <p className="mb-5 font-light text-gray-900 sm:text-xl dark:text-gray-400">Looking for a skilled website developer? Look no further! Our team of expert developers can create a professional website that meets your needs and exceeds your expectations. Whether you need a simple brochure site or a complex e-commerce platform, we've got the experience and technical know-how to make it happen. We use the latest technologies and best practices to ensure your site is secure, responsive, and visually stunning. Contact us today to discuss your project and get a free quote!</p>
                         </div>
-            
+
                         <div className="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0 ">
                             {card.map((cards) => (
 
