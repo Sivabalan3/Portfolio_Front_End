@@ -5,9 +5,8 @@ import Axios from "axios";
 import { useFormik } from "formik";
 import { basicSchema } from "./schemas";
 import './error.css'
-import { HelmetProvider, Helmet } from "react-helmet-async";
 import lottie from "lottie-web";
-import audio from "../videos/whooo-2.mp3";
+
 const onSubmit = async (values, action) => {
   console.log(values);
   Axios.post("http://localhost:8001/form", values, action)
@@ -55,17 +54,11 @@ function Userform() {
             animationData: require('../videos/panda.json'),
         })
     }, [])
- const playAudio=()=>{
-  new Audio(audio).play();
- }
+
   return (
 
     <>
-      <HelmetProvider>
-        <Helmet>
-          <title>Userform</title>
-        </Helmet>
-      </HelmetProvider>
+     
       <section className="h-full bg-white dark:bg-slate-900  duration-300">
         <div className="h-full">
           {/* <!-- Left column container with background--> */}
@@ -73,7 +66,7 @@ function Userform() {
             className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
             <div
               className=" shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12 overflow-hidden">
-              <div ref={container} onClick={playAudio}
+              <div ref={container} 
                 className="w-full h-screen overflow-hidden"
               ></div>
 

@@ -1,14 +1,10 @@
 import React, { useEffect,useState ,useRef} from "react";
 import { CheckIcon, UserIcon, EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
-import loginimage from '../myimgs/back-loginwebp.webp';
-import { HelmetProvider, Helmet } from "react-helmet-async"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { adminSchema } from "./schemas";
 import MySwal from 'sweetalert2'
 import './error.css';
-import WrningAudio from "../videos/warning-1.mp3";
-import SuccessAudio from "../videos/success-1.mp3"
 import lottie from "lottie-web";
 
 function Loginform() {
@@ -27,8 +23,7 @@ function Loginform() {
                 showConfirmButton: false,
                 timer: 1500,
             });
-            action.resetForm()
-            new Audio(SuccessAudio).play();
+          
         }
         else {
             MySwal.fire({
@@ -72,11 +67,7 @@ function Loginform() {
 
     return (
         <>
-            <HelmetProvider>
-                <Helmet>
-                    <title>Admin</title>
-                </Helmet>
-            </HelmetProvider>
+            
             <section className="bg-gray-50 dark:bg-gray-900 w-full h-screen overflow-hidden">
                 <div ref={container} type="webp" alt="backlogin" className=" w-full h-screen absolute object-cover overflow-hidden" ></div>
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -142,9 +133,9 @@ function Loginform() {
                                     <span className="absolute flex items-center justify-center w-full h-full text-sky-500 transition-all duration-300 transform group-hover:translate-x-full ease">Login</span>
                                     <span className="relative invisible">Login</span>
                                 </button>
-                                <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+                                <Link to='/register' className="text-sm font-light text-gray-500 dark:text-gray-400">
                                     Don’t have an account yet? <a href="/h" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
-                                </p>
+                                </Link>
 
                             </form>
                         </div>

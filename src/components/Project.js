@@ -2,8 +2,9 @@ import React, {useState } from 'react';
 import { Link } from "react-router-dom";
 import crud from '../myimgs/crud.png';
 import quiz from '../myimgs/React-Quiz-App.jpg';
-import wheathor from '../myimgs/whather.jpg';
+import erp from '../myimgs/erp.png';
 import './error.css';
+
 
 
 function Project() {
@@ -63,10 +64,20 @@ function Project() {
     DisLike:handleDisikeClick},
 
     { title: "Project - 2", 
-    heading: "WHEATHER APP", 
-    imgs: wheathor, 
-    link:"/pnf",
-    disc: "The React Weather app is a short and neat application built using the React framework.The app retrieves weather data from an API and displays it on the user interface. It allows users to search for the weather of a specific location by entering the city name or ZIP code. The app dynamically updates the weather information in real-time, providing accurate and up-to-date forecasts. Overall, the React Weather app is a concise and efficient tool for accessing weather information.",
+    heading: "ERP SOFTWARE", 
+    imgs: erp, 
+    link:"https://github.com/Sivabalan3/main-project-erp",
+    disc: `"One of my significant projects was an **Enterprise Resource Planning (ERP) system**, a **MERN Stack software system** that helps businesses manage and integrate the essential parts of their operations. 
+
+    This ERP software system can also integrate various aspects such as:
+    - Planning
+    - Purchasing inventory
+    - Sales
+    - Marketing
+    - Finance
+    - Human resources, and more. 
+  
+    It's a **web-based application** that users can access remotely."`,
     Anime:"fade-down",
     duration:2000 ,
     Likeclick:handleLikeClick,

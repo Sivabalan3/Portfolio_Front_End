@@ -7,7 +7,6 @@ import node from "../myimgs/icons/nodejs.png";
 import tailwind from '../myimgs/icons/tailwindcss.png';
 import AOS from "aos";
 // import Helmet from 'react-helmet'
-import {HelmetProvider,Helmet} from "react-helmet-async";
 import lottie from "lottie-web";
 
 function Skils(){
@@ -36,12 +35,6 @@ function Skils(){
     }, [])
     return(
     <>
-    <HelmetProvider>
-
-    <Helmet>
-    <title>Details</title>
-  </Helmet>
-    </HelmetProvider>
 <section>
   
     <div className="bg-white dark:bg-slate-900 dark:text-white py-8 overflow-y-hidden">
@@ -86,7 +79,7 @@ function Skils(){
                 <h4 className="mb-3 font-bold text-lg md:text-2xl">React js</h4>
                 <img className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100 " src={reactjs} alt='reactjs'></img>
               </div>
-            </div>
+            </div>  
 
             <div className="mb-8 flex justify-between items-center w-full right-timeline">
               <div className="order-1 w-5/12"></div>
