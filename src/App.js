@@ -16,6 +16,7 @@ const Pagenotfound = lazy(() => import("./components/Pagenotfound"));
 const Dashboard = lazy(() => import("./components/Dashboard"));
 const Userform = lazy(() => import("./components/Userform"));
 const Foterpage =lazy(()=>import("./headerfile/Foterpage"));
+const Registerform =lazy(()=>import("./components/Registerform"));
 // const Home = lazy(() => {
 //   return new Promise(resolve => {
 //     setTimeout(() => resolve(import("./components/Home")), 2000);
@@ -62,6 +63,7 @@ function App() {
             <Routes>
                   <Route path="/" exact element={<Home />} />
                   <Route path="/loginpage" element={<Login />} />
+                  <Route path="/register" element={<Registerform />} />
                   <Route path='/about' element={<Aboutme/>}/>
                   <Route path='/skils' element={<Skils/>}/>
                   <Route path="/Admindashboard" element={<Dashboard/>}/>

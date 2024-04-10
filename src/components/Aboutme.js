@@ -14,7 +14,6 @@ import {GrDocker} from 'react-icons/gr';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import {HelmetProvider,Helmet} from "react-helmet-async"
 function Aboutme() {
     //if protected route  for useNavigate 
     const history =useNavigate();
@@ -52,11 +51,6 @@ function Aboutme() {
       }, []);
     return (
         <>
-        <HelmetProvider>
-        <Helmet >
-            <title>About</title>
-        </Helmet>
-        </HelmetProvider>
         
 
             <section className="bg-white dark:bg-slate-800 duration-300">
@@ -70,7 +64,7 @@ function Aboutme() {
 
                                     
                                     <h1 className="text-xl font-bold">Sivabalan M</h1>
-                                    <p className=" text-amber-300">React js Developer</p>
+                                    <p className=" text-amber-300">Front End  Developer</p>
                                     <div className="mt-6 flex flex-wrap md:gap-4 gap-2 justify-center">
                                         <a   href={Resum}
                                             download="Resume"
@@ -144,7 +138,7 @@ function Aboutme() {
                         <div className="col-span-5 md:col-span-9  px-2 ">
                             <div data-aos="fade-right" data-aos-duration="2000" className=" text-slate-800 rounded-lg p-6 duration-300 dark:bg-slate-900 dark:text-slate-300 border border-sky-500 shadow-2xl">
                                 <h2 className="text-xl  font-bold mb-4 text-sky-400 underline underline-offset-4 tracking-wider">About Me</h2>
-                                <p className="text-lg" data-aos="flip-left" data-aos-duration="1000" >Iam a React JS developer, I am passionate about creating unique and intuitive user experiences through responsive web design and efficient code. With several years of experience in this field, I have honed my skills in building scalable, maintainable, and robust web applications using React, Redux, and other related technologies. Additionally, I am an photoshop designer and who can work well both independently and collaboratively in a fast-paced environment while prioritizing deadline-driven tasks. In my free time, I enjoy staying current with the latest React updates and exploring new programming concepts to enhance my knowledge and expertise.
+                                <p className="text-lg" data-aos="flip-left" data-aos-duration="1000" >Hi, I'm  front-end developer and React.js specialist, I am passionate about creating unique and intuitive user experiences through responsive web design and efficient code. With several years of experience in this field, I have honed my skills in building scalable, maintainable, and robust web applications using React, Redux, and other related technologies. Additionally, I am an photoshop designer and who can work well both independently and collaboratively in a fast-paced environment while prioritizing deadline-driven tasks. In my free time, I enjoy staying current with the latest React updates and exploring new programming concepts to enhance my knowledge and expertise.
                                 </p>
 
                                 <h3 className="font-semibold text-center mt-3 -mb-2 text-sky-400 underline underline-offset-4 tracking-wider ">
@@ -206,7 +200,7 @@ function Aboutme() {
             <section>
                 
 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 dark:bg-gray-900 px-4">
+{/* <div class="grid grid-cols-2 md:grid-cols-4 gap-4 dark:bg-gray-900 px-4">
     <div class="grid gap-4">
         <div>
             <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""/>
@@ -251,7 +245,7 @@ function Aboutme() {
             <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""/>
         </div>
     </div>
-</div>
+</div> */}
 
             </section>
         </>

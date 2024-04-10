@@ -10,7 +10,7 @@ import {
   } from '@heroicons/react/24/outline';
 import logoutsimages from "../myimgs/logout.webp";
 // import Helmet from "react-helmet";
-import {HelmetProvider,Helmet} from "react-helmet-async"
+
 
 function Admindashboard() {
 const history=useNavigate();
@@ -30,12 +30,7 @@ const [logout,setlogout]= useState(false);
     return (
         <>
 		<main>
-			<HelmetProvider>
-
-		<Helmet>
-			<title>Admin2</title>
-		</Helmet>
-			</HelmetProvider>
+			
 		{/* <section className=" z-30 w-full h-screen dark:bg-slate-900 overflow-hidden">
 		      <button data-collapse-toggle="mobile-menu-2" type="button" className="float-right p-2 right-6 bg-slate-700 rounded-full" aria-controls="mobile-menu-2" aria-expanded="false" onClick={handleclick}>
                 {
