@@ -1,264 +1,377 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { PiCodeSimpleFill, } from "react-icons/pi";
-import { BiLogIn } from 'react-icons/bi';
-import { FaCircleChevronRight } from 'react-icons/fa6';
-import { FaSearch, FaEdit } from 'react-icons/fa';
-import { SiFiles } from 'react-icons/si';
-import { RiDashboardFill, RiInboxUnarchiveLine, RiAccountCircleLine } from "react-icons/ri";
-import { TbTruckDelivery, TbSettings } from 'react-icons/tb';
-import { MdDelete } from 'react-icons/md';
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import Axios from "axios";
-
+import { Button, Tooltip, Tag } from "antd";
+import { notification } from 'antd';
+import { LogoutOutlined } from "@ant-design/icons";
+import { logout } from "../store/features/authSlice";
+import { logoutUser } from "../store/api/userApiSlice";
+import "./styles/dashboard.css";
+import { Outlet } from "react-router-dom";
+import Layouts from "./Layouts";
 
 const Dashboard = () => {
-  const [open, setOpen] = useState(false);
-  const [Search,setSearch]=useState("")
-  const Menus = [
-    { title: "Dashboard", icon: <RiDashboardFill className="w-8 h-8" /> },
-    { title: "Inbox", icon: <RiInboxUnarchiveLine className="w-8 h-8" /> },
-    { title: "Accounts", icon: <RiAccountCircleLine className="w-8 h-8" />, gap: true },
-    { title: "Order ", icon: <TbTruckDelivery className="w-8 h-8" /> },
-    { title: "Search", icon: <FaSearch className="w-8 h-8" /> },
-    { title: "Analytics", icon: <PiCodeSimpleFill className="w-8 h-8" /> },
-    { title: "Files ", icon: <SiFiles className="w-8 h-8" />, gap: true },
-    { title: "LogOut", icon: <TbSettings className="w-8 h-8" /> },
-  ];
-  const history = useNavigate();
-  const [logout, setlogout] = useState(false);
-
+  const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.auth);
   useEffect(() => {
-    if (!localStorage.getItem('auth')) history("/loginpage")
+    if (!localStorage.getItem("userInfo")) {
+      navigate("/loginpage");
+    } else {
+      navigate("/Admindashboard");
+    }
   }, [logout]);
 
-  const logouthandler = (e) => {
-    e.preventDefault();
-    localStorage.removeItem("auth");
-    setlogout(true)
+  const dispatch = useDispatch();
+  const logouthandler = async () => {
+    try {
+      await dispatch(logoutUser()).unwrap();
+      dispatch(logout());
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   //mongodb dada fetching
-  const [users, setusers] = useState([])
+  const [users, setusers] = useState([]);
   useEffect(() => {
     Axios.get("http://localhost:8001/form/")
-      .then(users => setusers(users.data))
-      .catch(err => console.log(err))
-  }, [])
+      .then((users) => setusers(users.data))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <>
-      <div className="flex dark:bg-slate-800 bg-white duration-300">
-        <div
-          className={` ${open ? "w-72" : "w-20 "
-            }  dark:bg-slate-900 bg-white shadow-2xl drop-shadow-2xl h-screen p-5  pt-8 relative   border-r border-slate-100 text-white font-semibold`}
-        >
-          <h1
-            className={`absolute cursor-pointer -right-3 top-9 w-9 h-9 border-dark-purple
-           border-2 rounded-full  ${!open && "rotate-180"}`}
-            onClick={() => setOpen(!open)}
-          ><FaCircleChevronRight className="w-8 h-8 hover:text-sky-400 text-sky-400" /></h1>
-          <div className="flex gap-x-4 items-center">
-            <h1
-              className={`cursor-pointer duration-500 ${open && "rotate-[360deg]"
-                }`}
-            ><BiLogIn className="w-8 h-8 dark:text-sky-400 text-sky-500"  /></h1>
-            <h1
-              className={`dark:text-white text-gray-600 origin-left font-medium text-xl duration-100 cursor-pointer hover:text-sky-400 ${!open && "scale-0"
-                }`} onClick={logouthandler}
+      <div className="bg-slate-200 flex h-screen ">
+        <aside className="fixed z-50 md:relative">
+          <input type="checkbox" className="peer hidden" id="sidebar-open" />
+          <label
+            className="peer-checked:rounded-full peer-checked:p-2 peer-checked:right-6 peer-checked:bg-gray-600 peer-checked:text-white absolute top-8 z-20 mx-4 cursor-pointer md:hidden"
+            htmlFor="sidebar-open"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth="2"
             >
-              LogOut User
-            </h1>
-
-          </div>
-          <ul className="pt-6">
-            {Menus.map((Menu, index) => (
-              <li
-                key={index}
-                className={`flex  rounded-md p-2 cursor-pointer hover:bg-sky-400 text-gray-600 dark:text-white text-sm items-center gap-x-4 
-              ${Menu.gap ? "mt-9" : "mt-2"} ${index === 0 && "bg-light-white"
-                  } `}
-              >
-                {/* <img src={`./src/assets/${Menu.src}.png`} /> */}
-                <h1 className="dark:text-sky-400 text-sky-500">{Menu.icon}</h1>
-                <span className={`${!open && "hidden"} origin-left duration-200 text-lg`}>
-                  {Menu.title}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </label>
+          <nav
+            aria-label="Sidebar Navigation"
+            className="peer-checked:w-64 left-0 z-10 flex h-screen w-0 flex-col overflow-hidden bg-gray-700 text-white transition-all md:h-screen md:w-64 lg:w-72"
+          >
+            {userInfo ? (
+              <div className="bg-slate-800 mt-5 py-4 pl-10 md:mt-10">
+                <span className="">
+                  <span className="mr-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 align-bottom text-2xl font-bold">
+                    {userInfo.username.charAt(0).toUpperCase()}
+                  </span>
+                  <span className="text-xl font-semibold">{userInfo.username}</span>
                 </span>
-              </li>
-            ))}
-
-          </ul>
-        </div>
-
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-full mt-6 px-3 ">
-          <div className="flex mb-3">
-
-          <label className="text-2xl text-bold dark:text-white ps-6 pe-2">Search Here :</label>
-            <input   className= "w-64  px-4 py-2 block bg-gray-50 text-gray-900 sm:text-sm rounded-lg focus:ring-sky-400 focus:border-sky-400 border-2  border-gray-300  focus:outline-none dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
-                   placeholder="Search" onChange={(ev)=>setSearch(ev.target.value)}    
-                   />
               </div>
-            {/* <input placeholder="Search" onChange={(ev)=>setSearch(ev.target.value)}/> */}
-          <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 px-3">
-            <thead className="text-md text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                <th scope="col" className="px-6 py-3 text-sky-500 ">
-                  NAME
-                </th>
-                <th scope="col" className="px-6 py-3 text-sky-500">
-                  EMAIL
-                </th>
-                <th scope="col" className="px-6 py-3 text-sky-500">
-                  PHONE
-                </th>
-                <th scope="col" className="px-6 py-3 text-sky-500">
-                  ADDRESS
-                </th>
-                <th scope="col" className="px-6 py-3 text-sky-500">
-                  DATE
-                </th>
-                <th scope="col" className="px-6 py-3 text-sky-500">
-                  TIME
-                </th>
-                <th scope="col" className="px-6 py-3 text-sky-500">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  KOBI KRISNAN
-                </th>
-                <td className="px-6 py-4 text-green-500">
-                  KOBI343453@GMAIL.COM
-                </td>
-                <td className="px-6 py-4">
-                  +91 34345 35345
-                </td>
-                <td className="px-6 py-4">
-                  NEW ZLAND
-                </td>
-                <td className="px-6 py-4">
-                  41/45/199
-                </td>
-
-                <td className="px-6 py-4">
-                  12.55 AM
-                </td>
-                <td className="pl-2 flex gap-3 mt-1.5">
-                  <div className="w-auto h-auto">
-                    <button className="flex-1 h-full">
-                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-green-500 text-white shadow rounded-lg">
-                        <div>
-                          <FaEdit className=" w-5 h-5" />
-                        </div>
-                      </div>
-                    </button>
-                  </div>
-                  <div className="w-auto h-auto">
-                    <div className="flex-1 h-full">
-                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-red-500 text-white shadow rounded-lg">
-                        <div className="relative">
-                          <MdDelete className="w-5 h-5" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-
-              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600">
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  KANNAN
-                </th>
-                <td className="px-6 py-4  text-green-500">
-                  KANNAN343453@GMAIL.COM
-                </td>
-                <td className="px-6 py-4">
-                  +91 34345 35345
-                </td>
-                <td className="px-6 py-4">
-                  NEW ZLAND
-                </td>
-                <td className="px-6 py-4">
-                  41/45/199
-                </td>
-                <td className="px-6 py-4">
-                  12.55 AM
-                </td>
-                <td className="pl-2 flex gap-3 mt-1.5">
-                  <div className="w-auto h-auto">
-                    <button className="flex-1 h-full">
-                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-green-500 text-white shadow rounded-lg">
-                        <div>
-                          <FaEdit className=" w-5 h-5" />
-                        </div>
-                      </div>
-                    </button>
-                  </div>
-                  <div className="w-auto h-auto">
-                    <div className="flex-1 h-full">
-                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-red-500 text-white shadow rounded-lg">
-                        <div className="relative">
-                          <MdDelete className="w-5 h-5" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              {users.filter((user)=>{
-                return Search.toLowerCase()===''?user:user.username.toLowerCase().includes(Search);
-              }).map((user, index) => {
-                return (
-                  <tr key={index} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {user.username}
-                    </th>
-                    <td className="px-6 py-4 text-green-500">
-                      {user.useremail}
-                    </td>
-                    <td className="px-6 py-4">
-                      {user.userphone}
-                    </td>
-                    <td className="px-6 py-4">
-                      {user.useraddres}
-                    </td>
-                    <td className="px-6 py-4">
-                      {user.userdate}
-                    </td>
-                    <td className="px-6 py-4">
-                      {user.usertime}
-
-                    </td>
-                    <td className="pl-2 flex gap-3 mt-1.5">
-                  <div className="w-auto h-auto">
-                    <button className="flex-1 h-full">
-                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-green-500 text-white shadow rounded-lg">
-                        <div>
-                          <FaEdit className=" w-5 h-5" />
-                        </div>
-                      </div>
-                    </button>
-                  </div>
-                  {/* <button className="w-auto h-auto cursor-pointer" type="button"
-                  onClick={onDeleteClick(user._id)}
+            ) : (
+              ""
+            )}
+            <ul className="mt-8 space-y-3 md:mt-20">
+              <li className="relative">
+                <NavLink
+              
+                to="/Admindashboard"
+                className={({ isActive }) => isActive
+                ? "focus:bg-blue-600 hover:bg-blue-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none":"focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 font-semibold focus:outline-none"}
+                >
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                      />
+                    </svg>
+                  </span>
+                  <span className="">Dashboard</span>
+                </NavLink>
+              </li>
+              
+                <li className="relative">
+                  <NavLink
+                    to="project-create"
+                    className={({ isActive }) => isActive
+                    ? "focus:bg-blue-600 hover:bg-blue-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none":"focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 font-semibold focus:outline-none"}
+                    onClick={(e) => {
+                      if (!userInfo.isAdmin) {
+                        e.preventDefault();
+                        notification.error({
+                          message: 'Access Denied',
+                          description: 'You do not have permission to access this page.',
+                        });
+                      }
+                    }}
                   >
-                    <div className="flex-1 h-full">
-                      <div className="flex items-center justify-center flex-1 h-full p-2 bg-red-500 text-white shadow rounded-lg">
-                        <div className="relative">
-                          <MdDelete className="w-5 h-5" />
-                        </div>
-                      </div>
-                    </div>
-                  </button> */}
-                  <button  >Delete</button>
-                </td>
-                  </tr>)
-              })}
-            </tbody>
-          </table>
-        </div>
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                        />
+                      </svg>
+                    </span>
+                    <span className="">Project Create</span>
+                  </NavLink>
+                  <svg
+                    className="text-slate-200 absolute -right-1 -top-1/2 z-10 hidden h-32 w-8 md:block"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="399.349 57.696 100.163 402.081"
+                    strokeWidth="1em"
+                    height="4em"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M 499.289 57.696 C 499.289 171.989 399.349 196.304 399.349 257.333 C 399.349 322.485 499.512 354.485 499.512 458.767 C 499.512 483.155 499.289 57.696 499.289 57.696 Z"
+                    />
+                  </svg>
+                </li>
+             
+              
+              <li className="relative">
+                <NavLink
+                to='admin-edit'
+                className={({ isActive }) => isActive
+                    ? "focus:bg-blue-600 hover:bg-blue-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none":"focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none"}
+                    onClick={(e) => {
+                      if (!userInfo.isAdmin) {
+                        e.preventDefault();
+                        notification.error({
+                          message: 'Access Denied',
+                          description: 'You do not have permission to access this page.',
+                        });
+                      }
+                    }}
+                    >
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                      />
+                    </svg>
+                  </span>
+                  <span className="">Admin Edit</span>
+                </NavLink>
+              </li>
+               
+              <li className="relative">
+                <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+                  <span className="text-2xl">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      role="img"
+                      strokeWidth="1em"
+                      height="1em"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 36 36"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M32 15h-1V9a1 1 0 0 0-1-1H6a1 1 0 0 1-1-.82v-.36A1 1 0 0 1 6 6h23.58a1 1 0 0 0 0-2H6a3 3 0 0 0-3 3a3.08 3.08 0 0 0 0 .36v20.57A4.1 4.1 0 0 0 7.13 32H30a1 1 0 0 0 1-1v-6h1a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1Zm-3 15H7.13A2.11 2.11 0 0 1 5 27.93V9.88A3.11 3.11 0 0 0 6 10h23v5h-7a5 5 0 0 0 0 10h7Zm2-7h-9a3 3 0 0 1 0-6h9Z"
+                        className="clr-i-outline clr-i-outline-path-1"
+                      />
+                      <circle
+                        cx="23.01"
+                        cy="20"
+                        r="1.5"
+                        fill="currentColor"
+                        className="clr-i-outline clr-i-outline-path-2"
+                      />
+                      <path fill="none" d="M0 0h36v36H0z" />
+                    </svg>
+                  </span>
+                  <span className="">Project Orders</span>
+                </button>
+              </li>
+              <li className="relative">
+                <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                      />
+                    </svg>
+                  </span>
+                  <span className="">Cards</span>
+                </button>
+              </li>
+              <li className="relative">
+                <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </span>
+                  <span className="">Settings</span>
+                </button>
+              </li>
+            </ul>
 
+            {/* <div className="my-6 mt-auto ml-10 flex cursor-pointer">
+              <div>
+                <img
+                  className="h-12 w-12 rounded-full"
+                  src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                />
+              </div>
+              <div className="ml-3">
+                <p className="font-medium">Diana Reeves</p>
+                <p className="text-sm text-gray-300">Kyiv, Ukraine</p>
+              </div>
+            </div> */}
+          </nav>
+        </aside>
+
+        <div className="flex h-full w-full flex-col">
+          <header className="relative flex flex-col items-center bg-white px-4 py-4 shadow sm:flex-row md:h-20">
+            <div className="flex w-full flex-col justify-between overflow-hidden transition-all sm:max-h-full sm:flex-row sm:items-center">
+              <div className="relative ml-10 flex items-center justify-between rounded-md sm:ml-auto">
+                <svg
+                  className="absolute left-2 block h-5 w-5 text-gray-400"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8" className=""></circle>
+                  <line
+                    x1="21"
+                    y1="21"
+                    x2="16.65"
+                    y2="16.65"
+                    className=""
+                  ></line>
+                </svg>
+                <input
+                  type="name"
+                  name="search"
+                  className="h-12 w-full rounded-md border border-gray-100 bg-gray-100 py-4 pr-4 pl-12 shadow-sm outline-none focus:border-blue-500"
+                  placeholder="Search for anything"
+                />
+              </div>
+
+              <ul className="mx-auto mt-4 flex space-x-6 sm:mx-5 sm:mt-0">
+                <li className="">
+                  <button className="flex h-8 w-8 items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </button>
+                </li>
+                <li className="">
+                  <button className="flex h-8 w-8 items-center justify-center rounded-xl border text-gray-600 hover:text-black hover:shadow">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+                      />
+                    </svg>
+                  </button>
+                </li>
+                <li className="">
+                  <Tooltip title="Logout" placement="bottom" color={"red"}>
+                    <Button
+                      onClick={logouthandler}
+                      className="border-red-500 border-2 flex h-8 w-8 items-center justify-center rounded-xl  text-gray-600 hover:text-black hover:shadow"
+                    >
+                      <LogoutOutlined />
+                    </Button>
+                  </Tooltip>
+                </li>
+              </ul>
+            </div>
+          </header>
+
+          <div className="h-full overflow-hidden pl-10">
+            <Layouts />
+          </div>
+        </div>
       </div>
     </>
   );

@@ -10,9 +10,9 @@ import AOS from "aos";
 import lottie from "lottie-web";
 
 function Skils(){
-  const history =useNavigate();
-  useEffect(()=>{
-      if(localStorage.getItem('auth')) history("/Admindashboard");
+  const navigate =useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("userInfo")) navigate("/Admindashboard");
   });
     useEffect(() => {
         AOS.init();
