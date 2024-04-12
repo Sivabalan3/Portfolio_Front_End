@@ -36,9 +36,9 @@ import msoffice from "../myimgs/swip/msoffice.png";
 import photoshop from "../myimgs/swip/photoshop.png";
 import { TextGenerateEffect } from "./TextGenerateEffect";
 function Home() {
-  const history = useNavigate();
+  const navigate= useNavigate();
   useEffect(() => {
-    if (localStorage.getItem("auth")) history("/Admindashboard");
+    if (localStorage.getItem("userInfo")) navigate("/Admindashboard");
   });
   //TIME EVENTS
   let time = new Date().toLocaleTimeString();

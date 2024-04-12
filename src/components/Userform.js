@@ -2,6 +2,7 @@ import React,{useEffect,useRef} from "react";
 import user from '../myimgs/register.webp'
 import MySwal from 'sweetalert2'
 import Axios from "axios";
+import {useNavigate} from 'react-router-dom'
 import { useFormik } from "formik";
 import { basicSchema } from "./schemas";
 import './error.css'
@@ -24,7 +25,10 @@ const onSubmit = async (values, action) => {
 
 }
 function Userform() {
-
+  const navigate=useNavigate()
+  useEffect(() => {
+    if (localStorage.getItem("userInfo")) navigate("/Admindashboard");
+  });
   const { values, handleBlur, handleChange, errors, handleSubmit, touched, isSubmitting } = useFormik({
     initialValues: {
       username: "",

@@ -16,10 +16,10 @@ import "aos/dist/aos.css";
 
 function Aboutme() {
     //if protected route  for useNavigate 
-    const history =useNavigate();
-    useEffect(()=>{
-        if(localStorage.getItem('auth')) history("/Admindashboard");
-    }); 
+    const navigate=useNavigate();
+    useEffect(() => {
+        if (localStorage.getItem("userInfo")) navigate("/Admindashboard");
+      });
     //READ MORE OPTIONS unorderlist
     const [isShowMore, setIsShowMore] = useState(false);
 
