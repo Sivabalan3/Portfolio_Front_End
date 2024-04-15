@@ -1,14 +1,14 @@
 const jwt =require('jsonwebtoken');
 const User=require('../modals/userModel.js');
 const asyncHandler=require('../middlewares/asyncHandler.js')
-
+require('dotenv').config();
 
 const authenticate = asyncHandler(async (req, res, next) => {
   let token;
 
   // Read JWT from the 'jwt' cookie
   token = req.cookies.jwt;
-
+console.log('token',token);
   if (token) {
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);

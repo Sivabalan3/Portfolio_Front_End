@@ -9,7 +9,7 @@ export const registerUser = createAsyncThunk(
   async (user, thunkAPI) => {
     const { username, email, password } = user;
     try {
-      const response = await axios.post(BASE_URL+'/api/users/register', { username, email, password });
+      const response = await axios.post(BASE_URL+'/api/users', { username, email, password });
       if (response.data.message) {
         notification.success({
           message: 'Success',
@@ -35,7 +35,7 @@ export const loginUser = createAsyncThunk(
   async (user, thunkAPI) => {
     const { email, password } = user;
     try {
-      const response = await axios.post(BASE_URL+'/api/users/login', { email, password });
+      const response = await axios.post(BASE_URL+'/api/users/auth', { email, password });
       if (response.data.message) {
         notification.success({
           message: 'Success',

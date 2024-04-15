@@ -1,18 +1,21 @@
 const express =require('express')
 const mongoose =require("mongoose")
-const cors = require('cors')
+const path=require('path')
+const cors = require('cors');
+const cookieParser=require('cookie-parser')
 require('dotenv').config();
 
 
 // files 
 const form=require('./modals/Form.model')
 const userRoutes =require('./routes/userRoutes')
-
+const projectRoutes=require('./routes/projectRoutes')
+const uploadRoutes=require('./routes/uploadRoutes')
 const app=express();
 const url=process.env.ATLAS_URL;
 
 app.use(cors());
-app.use(express.json())
+
 mongoose.connect(url)
 const connection=mongoose.connection;
 connection.once('open',()=>{
@@ -31,8 +34,22 @@ app.get('/form',(req,res)=>{
     .then(users=>res.json(users))
     .catch(err=>res.json(err))
 })
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+require('dotenv').config({ path: '.env' });
 
 app.use("/api/users",userRoutes);
+app.use("/api/projects",projectRoutes);
+app.use("/api/upload",uploadRoutes );
+app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.json({ error: err.message });
+  });
+  
+const dirname = path.resolve();
+app.use("/uploads", express.static(path.join(dirname + "/uploads")));
 
 //Delete the Data
 app.listen('8001',()=>{
