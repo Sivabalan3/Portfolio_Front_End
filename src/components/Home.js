@@ -34,6 +34,7 @@ import tailwindcss from "../myimgs/swip/tailwindcss.png";
 import metrialui from "../myimgs/swip/metrailui.png";
 import msoffice from "../myimgs/swip/msoffice.png";
 import photoshop from "../myimgs/swip/photoshop.png";
+import Homeimg from '../myimgs/home.jpg'
 import { TextGenerateEffect } from "./TextGenerateEffect";
 function Home() {
   const navigate= useNavigate();
@@ -158,14 +159,14 @@ function Home() {
     },
   ];
 
-  // const words = `Looking for a skilled website developer? Look no further! Our team of expert developers can create a professional website that meets your needs and exceeds your expectations. Whether you need a simple brochure site or a complex e-commerce platform, we've got the experience and technical know-how to make it happen. We use the latest technologies and best practices to ensure your site is secure, responsive, and visually stunning. Contact us today to discuss your project and get a free quote!`;
+  const words = `Looking for a skilled website developer? Look no further! Our team of expert developers can create a professional website that meets your needs and exceeds your expectations. Whether you need a simple brochure site or a complex e-commerce platform, we've got the experience and technical know-how to make it happen. We use the latest technologies and best practices to ensure your site is secure, responsive, and visually stunning. Contact us today to discuss your project and get a free quote!`;
   return (
     <>
       {/* NEW   CREATING   */}
       <main>
         <div className="relative">
           <img
-            src="https://img.freepik.com/free-vector/globe-with-network-communications-banner_1048-12357.jpg?t=st=1712721585~exp=1712725185~hmac=c7466445da4afd5e23a5e4a4657737a86c483a089c7e15961e2772fc14b6083f&w=1380"
+            src={Homeimg}
             className="absolute inset-0 object-cover w-full h-full"
             alt="img"
           />
@@ -303,7 +304,7 @@ function Home() {
                 Designed For Business Teams Like Yours
               </h2>
               <p className="mb-5 font-light text-gray-900 sm:text-xl dark:text-gray-400">
-                {/* <TextGenerateEffect words={words} /> */}
+                 <TextGenerateEffect words={words} /> 
               </p>
             </div>
 

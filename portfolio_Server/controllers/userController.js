@@ -1,11 +1,11 @@
 const User =require('../modals/userModel');
 const bcrypt=require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const asyncHandler=require('../middlewares/asyncHandler');
 const createToken=require('../utils/createToken')
 
 const createUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
-  console.log(username, email, password)
 
   if (!username || !email || !password) {
     throw new Error("Please fill all the inputs");
@@ -24,14 +24,21 @@ const createUser = asyncHandler(async (req, res) => {
 
   try {
     await newUser.save();
-    createToken(res, newUser._id);
+
+    // Generate a token
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+
+    // Store the token in the user document
+    newUser.token = token;
+    await newUser.save();
 
     res.status(201).json({
       _id: newUser._id,
       username: newUser.username,
       email: newUser.email,
       isAdmin: newUser.isAdmin,
-      message: `${username}  User created successfully`, 
+      token,
+      message: `${username} User created successfully`,cxcxt    
     });
   } catch (error) {
     res.status(400).json({ message: 'Invalid user data' });
@@ -39,29 +46,30 @@ const createUser = asyncHandler(async (req, res) => {
 });
 
 
+
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-
-  console.log(email);
-  console.log(password);
 
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
-    const isPasswordValid = await bcrypt.compare(
-      password,
-      existingUser.password
-    );
+    const isPasswordValid = await bcrypt.compare(password, existingUser.password);
 
     if (isPasswordValid) {
-      createToken(res, existingUser._id);
+      // Generate a new token
+      const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+
+      // Store the new token in the user document
+      existingUser.token = token;
+      await existingUser.save();
 
       res.status(201).json({
         _id: existingUser._id,
         username: existingUser.username,
         email: existingUser.email,
         isAdmin: existingUser.isAdmin,
-        message: `${email}  Login successfully`, 
+        token,
+        message: `${email} Login successfully`,
       });
     } else {
       res.status(401).json({
@@ -98,4 +106,4 @@ const countTotalemails = async (req, res) => {
   }
 };
 
-module.exports = {createUser,loginUser,logoutCurrentUser,countTotalemails};
+module.exports = {createUser,loginUser,logoutCurrentUser,countTotalemails,getAllUsers};

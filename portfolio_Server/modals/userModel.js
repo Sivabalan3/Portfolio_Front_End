@@ -21,7 +21,11 @@ const userSchema = mongoose.Schema(
     isAdmin: {
       type: Boolean,
       required: true,
-      default: false,
+      default: true,
+    },
+
+    token: {
+      type: String,
     },
   },
   { timestamps: true }
@@ -29,3 +33,4 @@ const userSchema = mongoose.Schema(
 
 const User = mongoose.model("User", userSchema);
 module.exports=User;
+
