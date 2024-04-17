@@ -15,5 +15,10 @@ const { addProject,addProjectReview,
 
 
     router.route("/").get(fetchProjects).post(formidable(),addProject);
+    router
+    .route("/:id")
+    .get(fetchProjectById)
+    // .put(authenticate, authorizeAdmin, formidable(), updateProductDetails)
+    .delete(removeProject);
 
     module.exports=router;

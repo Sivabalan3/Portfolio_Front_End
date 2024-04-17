@@ -192,7 +192,20 @@ const Dashboard = () => {
               </li>
                
               <li className="relative">
-                <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
+              <NavLink
+                to='project-create-card'
+                className={({ isActive }) => isActive
+                    ? "focus:bg-blue-600 hover:bg-blue-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none":"focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none"}
+                    onClick={(e) => {
+                      if (!userInfo.isAdmin) {
+                        e.preventDefault();
+                        notification.error({
+                          message: 'Access Denied',
+                          description: 'You do not have permission to access this page.',
+                        });
+                      }
+                    }}
+                    >
                   <span className="text-2xl">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -218,8 +231,8 @@ const Dashboard = () => {
                       <path fill="none" d="M0 0h36v36H0z" />
                     </svg>
                   </span>
-                  <span className="">Project Orders</span>
-                </button>
+                  <span className="">Project Card</span>
+                </NavLink>
               </li>
               <li className="relative">
                 <button className="focus:bg-slate-600 hover:bg-slate-600 flex w-full space-x-2 rounded-md px-10 py-4 text-gray-300 focus:outline-none">
