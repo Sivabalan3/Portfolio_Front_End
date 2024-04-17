@@ -24,6 +24,8 @@ const Registerform = lazy(() => import("./components/Registerform"));
 const ProjectCreateform = lazy(() => import("./components/ProjectCreateform"));
 const Status = lazy(() => import("./components/Status"));
 const AdminEdit = lazy(() => import("./components/AdminEdit"));
+const ProjectCreateCard = lazy(() => import("./components/Project"));
+const ProjectDetailsTab = lazy(() => import("./components/ProjectDetailsTab"));
 // const Home = lazy(() => {
 //   return new Promise(resolve => {
 //     setTimeout(() => resolve(import("./components/Home")), 2000);
@@ -67,6 +69,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/loginpage" element={<Login />} />
             <Route path="/register" element={<Registerform />} />
+            <Route path="/project/:id" element={<ProjectDetailsTab />} />
             <Route path="/about" element={<Aboutme />} />
             <Route path="/skils" element={<Skils />} />
 
@@ -76,6 +79,7 @@ function App() {
               <Route path="" element={<Status />} />
               <Route path="project-create" element={<ProjectCreateform />} />
               <Route path="Admin-edit" element={<AdminEdit />} />
+              <Route path="project-create-card" element={<ProjectCreateCard />} />
               // Add more child routes here
             </Route>
 

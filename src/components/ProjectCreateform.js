@@ -15,6 +15,8 @@ function ProjectCreatehtmlForm() {
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
+  const [githuburl,setgithuburl]=useState("");
+  const [livesite,setlivesite]=useState("")
 
   const dispatch = useDispatch();
   const handleSubmit = async (e) => {
@@ -31,6 +33,8 @@ function ProjectCreatehtmlForm() {
       projectData.append("quantity", quantity);
       projectData.append("brand", brand);
       projectData.append("countInStock", stock);
+      projectData.append("githuburl",githuburl);
+      projectData.append("livesite",livesite);
 
       const { data } = await dispatch(createProject(projectData)).unwrap();
 
@@ -191,21 +195,40 @@ function ProjectCreatehtmlForm() {
                   required=""
                 />
               </div>
-              {/* <div className="col-span-6 sm:col-span-3">
-                <label for="price" className="text-sm font-medium text-gray-900 block mb-2">Category</label>
-
-                <select
-                  placeholder="Choose Category"
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                  onChange={(e) => setCategory(e.target.value)}
+              <div className="col-span-6 sm:col-span-3">
+                <label
+                  for="githuburl"
+                  className="text-sm font-medium text-gray-900 block mb-2"
                 >
-                  {categories?.map((c) => (
-                    <option key={c._id} value={c._id}>
-                      {c.name}
-                    </option>
-                  ))}
-                </select>
-            </div> */}
+                  GithubUrl
+                </label>
+                <input
+                  value={githuburl}
+                  onChange={(e) => setgithuburl(e.target.value)}
+                  type="text"
+                  name="githuburl"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                  required=""
+                />
+              </div>
+
+              <div className="col-span-6 sm:col-span-3">
+                <label
+                  for="livesite"
+                  className="text-sm font-medium text-gray-900 block mb-2"
+                >
+                 LiveSite
+                </label>
+                <input
+                  value={livesite}
+                  onChange={(e) => setlivesite(e.target.value)}
+                  type="text"
+                  name="livesite"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                  required=""
+                />
+              </div>
+
               <div className="col-span-full">
                 <label className="text-sm font-medium text-gray-900 block mb-2">
                   Decription

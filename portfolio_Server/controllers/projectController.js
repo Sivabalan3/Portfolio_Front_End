@@ -1,9 +1,18 @@
-const asyncHandler =require("../middlewares/asyncHandler.js");
+const asyncHandler = require("../middlewares/asyncHandler.js");
 const Project = require("../modals/projectCreate.js");
 
 const addProject = asyncHandler(async (req, res) => {
   try {
-    const { name, description, price, category, quantity, brand } = req.fields;
+    const {
+      name,
+      description,
+      price,
+      category,
+      quantity,
+      brand,
+      livesite,
+      githuburl,
+    } = req.fields;
 
     // Validation
     switch (true) {
@@ -19,25 +28,41 @@ const addProject = asyncHandler(async (req, res) => {
       //   return res.status(400).json({ error: "Category is required" });
       case !quantity:
         return res.status(400).json({ error: "Quantity is required" });
+      case !githuburl:
+        return res.json({ error: "Githuburl is required" });
+      case !livesite:
+        return res.json({ error: "Livesite is required" });
     }
 
     const project = new Project({ ...req.fields });
     await project.save();
 
     // Success message
-    res.status(200).json({ message: "Project added successfully", project: project });
+    res
+      .status(200)
+      .json({ message: "Project added successfully", project: project });
   } catch (error) {
     console.error(error);
 
     // Error message
-    res.status(400).json({ message: "Failed to add project", error: error.message });
+    res
+      .status(400)
+      .json({ message: "Failed to add project", error: error.message });
   }
 });
 
-
 const updateProjectDetails = asyncHandler(async (req, res) => {
   try {
-    const { name, description, price, category, quantity, brand } = req.fields;
+    const {
+      name,
+      description,
+      price,
+      category,
+      quantity,
+      brand,
+      livesite,
+      githuburl,
+    } = req.fields;
 
     // Validation
     switch (true) {
@@ -53,6 +78,10 @@ const updateProjectDetails = asyncHandler(async (req, res) => {
       //   return res.json({ error: "Category is required" });
       case !quantity:
         return res.json({ error: "Quantity is required" });
+      case !githuburl:
+        return res.json({ error: "Githuburl is required" });
+      case !livesite:
+        return res.json({ error: "Livesite is required" });
     }
 
     const project = await Project.findByIdAndUpdate(
@@ -73,12 +102,17 @@ const updateProjectDetails = asyncHandler(async (req, res) => {
 const removeProject = asyncHandler(async (req, res) => {
   try {
     const project = await Project.findByIdAndDelete(req.params.id);
-    res.json(project);
+    if (project) {
+      res.json({ message: 'Project successfully deleted', project });
+    } else {
+      res.status(404).json({ error: 'Project not found' });
+    }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ error: 'Server error' });
   }
 });
+
 
 const fetchProjects = asyncHandler(async (req, res) => {
   try {
@@ -89,8 +123,6 @@ const fetchProjects = asyncHandler(async (req, res) => {
     res.status(500).json({ error: "Server Error" });
   }
 });
-
-
 
 const fetchProjectById = asyncHandler(async (req, res) => {
   try {
@@ -199,7 +231,7 @@ const filterProjects = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports= {
+module.exports = {
   addProject,
   updateProjectDetails,
   removeProject,

@@ -62,13 +62,31 @@ export const updateProject = createAsyncThunk('projects/updateProject', async ({
   return response.data;
 });
 
-export const deleteProject = createAsyncThunk('projects/deleteProject', async (projectId) => {
-  const response = await axios.delete(`${PROJECT_URL}/${projectId}`);
-  return response.data;
-});
+export const deleteProject = createAsyncThunk(
+  'projects/deleteProject',
+   async (projectId,{rejectWithValue}) => {
+     try{
+    const response = await axios.delete(`${BASE_URL}${PROJECT_URL}/${projectId}`);
+    if (response.data.message) {
+      notification.success({
+        message: 'Success',
+        description: response.data.message
+      });
+    }
+    return response.data;
+  }catch (error){
+    if (error.response && error.response.data && error.response.data.message) {
+      notification.error({
+        message: 'Error',
+        description: error.response.data.message
+      });
+  }
+  return rejectWithValue(error.response.data);
+}});
 
 export const createReview = createAsyncThunk('projects/createReview', async (data) => {
   const response = await axios.post(`${PROJECT_URL}/${data.projectId}/reviews`, data);
+  
   return response.data;
 });
 
@@ -108,7 +126,7 @@ const projectsSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    
+    //GET BROJECBYID FUNCTIONS
     builder.addCase(getProjectById.pending, (state) => {
       state.getProjectById.loading = true;
     });
@@ -120,11 +138,11 @@ const projectsSlice = createSlice({
       state.getProjectById.error = action.error.message;
       state.getProjectById.loading = false;
     });
+    //GET BROJECTS FUNCTION
     builder.addCase(getProjects.pending, (state) => {
       state.getProjects.loading = true;
     });
     builder.addCase(getProjects.fulfilled, (state, action) => {
-      // action.payload is the array of projects
       state.getProjects.data = action.payload;
       state.getProjects.loading = false;
     });
@@ -132,10 +150,14 @@ const projectsSlice = createSlice({
       state.getProjects.error = action.error.message;
       state.getProjects.loading = false;
     });
+   
     // ... Repeat for all other async actions ...
 
 
     
+
+
+    // NOT USED FUNCTIONS
     builder.addCase(getProjectDetails.fulfilled, (state, action) => {
       // handle the state update when the promise is fulfilled
     });
